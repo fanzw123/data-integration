@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../kafkastream-datarich/core/core.iml" filepath="$PROJECT_DIR$/../kafkastream-datarich/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kafkastream-datarich/data-ingest.iml" filepath="$PROJECT_DIR$/../kafkastream-datarich/data-ingest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/endpoint.iml" filepath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/endpoint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../kafkastream-datarich/integration/integration.iml" filepath="$PROJECT_DIR$/../kafkastream-datarich/integration/integration.iml" />
+    </modules>
+  </component>
+</project>

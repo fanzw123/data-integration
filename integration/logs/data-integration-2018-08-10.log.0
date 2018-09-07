@@ -1,0 +1,2 @@
+2018-08-10 10:23:03.000 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
+2018-08-10 10:23:03.003 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient

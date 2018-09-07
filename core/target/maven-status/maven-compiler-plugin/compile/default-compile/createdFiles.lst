@@ -1,0 +1,16 @@
+com\chedaojunan\report\model\CoordinateConvertRequestParam.class
+com\chedaojunan\report\model\CoordsysParamEnum.class
+com\chedaojunan\report\common\Constants.class
+com\chedaojunan\report\model\AutoGraspRequestParam.class
+com\chedaojunan\report\utils\CopyProperties.class
+com\chedaojunan\report\model\HongyanRawData.class
+com\chedaojunan\report\utils\PrepareCoordinateConvertRequest.class
+com\chedaojunan\report\utils\PrepareAutoGraspRequest.class
+com\chedaojunan\report\utils\ReadProperties.class
+com\chedaojunan\report\model\DatahubDeviceData.class
+com\chedaojunan\report\utils\Pair.class
+com\chedaojunan\report\utils\ObjectMapperUtils.class
+com\chedaojunan\report\model\FixedFrequencyIntegrationData.class
+com\chedaojunan\report\model\ExtensionParamEnum.class
+com\chedaojunan\report\model\FixedFrequencyGpsData.class
+com\chedaojunan\report\model\GaoDeFusionReturn.class

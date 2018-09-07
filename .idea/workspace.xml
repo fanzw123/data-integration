@@ -1,0 +1,1599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fd35d8dc-3aee-4607-88f7-79669534d840" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/FixedFrequencyGpsDataTimestampExtractor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest001.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest002.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest003.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest004.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest005.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest002.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest003.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest004.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest006.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/HongyanRawData.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/logback.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/test/resources/local/core.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/DataEnrich.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/FixedFrequencyAccessDataTimestampExtractor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/HongyanDataAccumulator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest001.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaStreamNewTest.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/README.md" afterPath="$PROJECT_DIR$/../kafkastream-datarich/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyAccessData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/ExternalApiExecutorService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/transformer/AccessDataTransformerSupplier.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DateUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/local/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/prod/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaConsumerTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest005.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest005.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerde.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/local/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/local/kafkastream.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/testdata" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/testdata" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/testdata1" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/testdata1" />
+    </list>
+    <ignored path="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/target/" />
+    <ignored path="$PROJECT_DIR$/../kafkastream-datarich/target/" />
+    <ignored path="$PROJECT_DIR$/../kafkastream-datarich/endpoint/target/" />
+    <ignored path="$PROJECT_DIR$/../kafkastream-datarich/core/target/" />
+    <ignored path="$PROJECT_DIR$/../kafkastream-datarich/integration/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/data-integration$KafkaConsumerTest.coverage" NAME="KafkaConsumerTest Coverage Results" MODIFIED="1536073580348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="KafkaProducerTest001.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2196">
+              <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataEnrich.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="91" column="72" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="72" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExternalApiExecutorService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="60" />
+              <folding>
+                <element signature="e#2038#2039#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="core.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1224">
+              <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kafkastream.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1944">
+              <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>SECOND_PER_MINUTE</find>
+      <find>datahub</find>
+      <find>copyProperties</find>
+      <find>System.out.println(</find>
+      <find>streamsConfiguration</find>
+      <find>kafkaApplicationName</find>
+      <find>getStreamConfig</find>
+      <find>allDeviceAccessDataList</find>
+      <find>enrichedDataList</find>
+      <find>key.serializer</find>
+      <find>encode</find>
+      <find>createMessageStreams</find>
+      <find>topic</find>
+      <find>Serializer</find>
+      <find>inputTopic</find>
+      <find>outputToDownstream</find>
+      <find>NUM_STANDBY_REPLICAS_CONFIG</find>
+      <find>REQUEST_TIMEOUT_MS_CONFIG</find>
+      <find>kafka.version</find>
+      <find>mergeFrom</find>
+      <find>.getText()</find>
+      <find>setUnknownFields</find>
+      <find>setText</find>
+      <find>enrich-jimu-data-ks</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../kafkastream-datarich" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/FixedFrequencyGpsDataTimestampExtractor.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/local/kafkastream.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest005.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/KafkaProducerTest006.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest003.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest004.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest002.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest001.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/DataEnrich.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest001.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest002.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest003.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest004.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest005.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/ExternalApiExecutorService.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/pom.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DateUtils.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest002.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest001.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest006.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest002.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoBean.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+    <option name="enabledProfiles">
+      <list>
+        <option value="local" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="data-integration" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="data-integration" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Profiles" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProfilesNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="2" />
+    <option name="width" value="1934" />
+    <option name="height" value="1036" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data-integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kafkastream-datarich" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data-integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kafkastream-datarich" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="js.eslint.eslintPackage" value="" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.chedaojunan.report.utils" />
+      <recent name="com.chedaojunan.report.client" />
+      <recent name="" />
+      <recent name="com.chedaojunan.report.transformer" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\git_project\kafkastream-datarich\core\src\main\java\com\chedaojunan\report\utils" />
+      <recent name="E:\git_project\kafkastream-datarich\core\src\test\com.test" />
+      <recent name="E:\git_project\kafkastream-datarich\core\src\main\java\com\chedaojunan\report\model" />
+      <recent name="E:\git_project\kafkastream-datarich\core\src\main\resources\local" />
+      <recent name="E:\git_project\kafkastream-datarich\core\src\main\resources\prod" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DataEnrich">
+    <configuration default="false" name="DataEnrich" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chedaojunan.report.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.chedaojunan.report.DataEnrich" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="integration" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="KafkaProducerTest001" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="KafkaProducerTest001" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="integration" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ProtoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chedaojunan.report.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.chedaojunan.report.utils.ProtoTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="integration" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="KafkaConsumerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="KafkaConsumerTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="integration" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="KafkaProducerTest002" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="KafkaProducerTest002" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="integration" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="TARGET" value="" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="core" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list />
+            </option>
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <module name="core" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="core" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.DataEnrich" />
+      <item index="1" class="java.lang.String" itemvalue="Application.KafkaProducerTest001" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ProtoTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.KafkaConsumerTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.KafkaProducerTest002" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.DataEnrich" />
+        <item index="1" class="java.lang.String" itemvalue="Application.KafkaProducerTest001" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ProtoTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.KafkaConsumerTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.KafkaProducerTest002" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fd35d8dc-3aee-4607-88f7-79669534d840" name="Default" comment="" />
+      <created>1533033356836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533033356836</updated>
+      <workItem from="1533033359813" duration="813000" />
+      <workItem from="1533043676167" duration="5603000" />
+      <workItem from="1533088808781" duration="26266000" />
+      <workItem from="1533135045406" duration="6447000" />
+      <workItem from="1533174956271" duration="28685000" />
+      <workItem from="1533540683096" duration="16559000" />
+      <workItem from="1533706190778" duration="4901000" />
+      <workItem from="1533732951027" duration="3113000" />
+      <workItem from="1533799501623" duration="2318000" />
+      <workItem from="1533867534041" duration="1324000" />
+      <workItem from="1534224096417" duration="1234000" />
+      <workItem from="1534254012848" duration="5257000" />
+      <workItem from="1534322927324" duration="1316000" />
+      <workItem from="1534401828176" duration="1865000" />
+      <workItem from="1534688855247" duration="599000" />
+      <workItem from="1534729106537" duration="15766000" />
+      <workItem from="1534768505006" duration="636000" />
+      <workItem from="1534806732849" duration="2224000" />
+      <workItem from="1534815873736" duration="6589000" />
+      <workItem from="1535007897613" duration="609000" />
+      <workItem from="1535031222931" duration="631000" />
+      <workItem from="1535954446353" duration="11068000" />
+      <workItem from="1536024688633" duration="6199000" />
+      <workItem from="1536068961210" duration="5735000" />
+      <workItem from="1536110800051" duration="20066000" />
+      <workItem from="1536155723546" duration="5888000" />
+      <workItem from="1536197961227" duration="16464000" />
+      <workItem from="1536286666222" duration="10501000" />
+      <workItem from="1536307806503" duration="1914000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="AutoGraspApiClientTest_testGetTrafficInfoFromAutoGraspResponseInvalid - 2018.08.08 at 15h 29m 26s.xml">
+      <configuration name="AutoGraspApiClientTest.testGetTrafficInfoFromAutoGraspResponseInvalid" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AutoGraspApiClientTest_testGetTrafficInfoFromAutoGraspResponseXN - 2018.08.08 at 15h 39m 23s.xml">
+      <configuration name="AutoGraspApiClientTest.testGetTrafficInfoFromAutoGraspResponseXN" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="210590000" />
+  </component>
+  <component name="TodoView" selected-index="3">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="2" width="1934" height="1036" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50056624" sideWeight="0.51554126" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21858217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28013778" sideWeight="0.48445874" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23361976" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39380023" sideWeight="0.485223" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java</url>
+          <line>379</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
+          <line>152</line>
+          <properties />
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
+          <line>171</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
+          <line>186</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java</url>
+          <line>72</line>
+          <properties />
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java</url>
+          <line>67</line>
+          <properties />
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java</url>
+          <line>59</line>
+          <properties />
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="91" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/clients/consumer/ConsumerConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="70" column="114" lean-forward="true" selection-start-line="70" selection-start-column="114" selection-end-line="70" selection-end-column="164" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/LongSerializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/BytesSerializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/BytesDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/clients/consumer/ConsumerRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="70" column="13" lean-forward="false" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="914" column="18" lean-forward="false" selection-start-line="914" selection-start-column="18" selection-end-line="914" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1026">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.pom">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="15" column="13" lean-forward="true" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/ByteBufferDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/DoubleDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="21" column="29" lean-forward="false" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/Serde.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/Serdes.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="767">
+          <caret line="102" column="24" lean-forward="true" selection-start-line="102" selection-start-column="24" selection-end-line="102" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/ByteArrayDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/Deserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/FloatDeserializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-86">
+          <caret line="18" column="41" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/Serializer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="10" column="48" lean-forward="false" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="117" column="21" lean-forward="true" selection-start-line="108" selection-start-column="6" selection-end-line="117" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3186">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoBean.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="638" column="18" lean-forward="false" selection-start-line="638" selection-start-column="18" selection-end-line="638" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="22" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="7" column="71" lean-forward="false" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="4" column="68" lean-forward="false" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/clients/producer/ProducerConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-streams/1.0.1/kafka-streams-1.0.1.jar!/org/apache/kafka/streams/StreamsBuilder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="39" column="45" lean-forward="false" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4555">
+          <caret line="336" column="60" lean-forward="false" selection-start-line="336" selection-start-column="35" selection-end-line="336" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="33" column="91" lean-forward="false" selection-start-line="33" selection-start-column="91" selection-end-line="33" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2015">
+          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1944">
+          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/logs/data-integration.log" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="60" />
+          <folding>
+            <element signature="e#2038#2039#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2196">
+          <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/logs/data-integration.log" />
+    <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-streams/1.0.1/kafka-streams-1.0.1.jar!/org/apache/kafka/streams/StreamsConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="52" column="31" lean-forward="false" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="91" column="72" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="126" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
