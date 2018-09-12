@@ -2,101 +2,110 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd35d8dc-3aee-4607-88f7-79669534d840" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/GPSUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/CoordinateConvertUtil.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/FixedFrequencyGpsDataTimestampExtractor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest001.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest002.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest003.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest004.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest005.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest002.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest003.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest004.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest006.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyAccessGpsData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest004.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest002.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest003.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GpsData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest01.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest001.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/HongyanRawData.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/logback.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/test/resources/local/core.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/DataEnrich.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/FixedFrequencyAccessDataTimestampExtractor.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest005.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest002.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/FixedFrequencyGpsDataTimestampExtractor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest004.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest003.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/DataHubTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListGps.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/ExternalApiExecutorService.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest001.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/HongyanDataAccumulator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaConsumerTest.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/DataHubTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/HongyanDataAccumulator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest001.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/test/resources/local/core.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/HongyanRawData.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaStreamNewTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/README.md" afterPath="$PROJECT_DIR$/../kafkastream-datarich/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/FixedFrequencyAccessDataTimestampExtractor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/logback.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/DataEnrich.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyAccessData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/ExternalApiExecutorService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/transformer/AccessDataTransformerSupplier.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DateUtils.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/CoordinateConvertClient.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/local/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/prod/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaConsumerTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest005.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest005.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerde.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RectangleTrafficInfoClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/ExtensionParamEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/AutoGraspApiClient.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/local/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/local/kafkastream.properties" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/testdata" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/testdata" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/UrlUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/CoordinateConvertClientTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/RectangleTrafficInfoClientTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/test/java/com/chedaojunan/report/client/AutoGraspApiClientTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/ResponseUtils.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerde.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/WriteDatahubUtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/README.md" afterPath="$PROJECT_DIR$/../kafkastream-datarich/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyIntegrationData.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJODeserializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/prod/endpoint.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/AzimuthFromLogLatUtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListDeserializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordsysParamEnum.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/transformer/AccessDataTransformerSupplier.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/testdata1" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/testdata1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/core.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/DateUtilsTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/SerdeFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerde.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/CoordinateConvertRequestParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/DatahubDeviceData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ReadProperties.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/KafkaProducerTest005.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest005.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/prod/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/SampledDataCleanAndRetTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/AutoGraspRequestParam.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/.gitignore" afterPath="$PROJECT_DIR$/../kafkastream-datarich/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/GaoDeApiResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyAccessData.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/WindowedSerde.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/RegeoClient.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/JsonPOJOSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/resources/local/kafkastream.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/resources/local/endpoint.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/resources/testdata" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/resources/testdata" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/serdes/ArrayListSerializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/GaoDeFusionReturn.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" afterPath="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/CalculateUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/utils/EndpointConfiguration.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/client/Client.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/pom.xml" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueDeserializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/Evaluation.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/test/java/PriorityQueueSerializer.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/src/main/java/com/chedaojunan/report/utils/DateUtils.java" afterPath="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DateUtils.java" />
     </list>
     <ignored path="$PROJECT_DIR$/../kafkastream-datarich/kafkastream/target/" />
     <ignored path="$PROJECT_DIR$/../kafkastream-datarich/target/" />
@@ -126,94 +135,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="KafkaProducerTest001.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2196">
-              <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataEnrich.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="91" column="72" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExternalApiExecutorService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="60" />
-              <folding>
-                <element signature="e#2038#2039#0" expanded="true" />
-                <element signature="e#2070#2071#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="core.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logback.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kafkastream.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1944">
-              <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -304,9 +226,9 @@
         <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
         <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java" />
         <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
-        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
         <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
         <option value="$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
+        <option value="$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
       </list>
     </option>
   </component>
@@ -389,6 +311,7 @@
     <panes>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -397,7 +320,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kafkastream-datarich" />
+              <option name="myItemId" value="integration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -407,23 +330,69 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="kafkastream-datarich" />
+              <option name="myItemId" value="integration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data-integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="integration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data-integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -1096,6 +1065,9 @@
       <workItem from="1536197961227" duration="16464000" />
       <workItem from="1536286666222" duration="10501000" />
       <workItem from="1536307806503" duration="1914000" />
+      <workItem from="1536728736995" duration="298000" />
+      <workItem from="1536729078968" duration="99000" />
+      <workItem from="1536729185492" duration="12000" />
     </task>
     <servers />
   </component>
@@ -1108,7 +1080,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="210590000" />
+    <option name="totallyTimeSpent" value="210999000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -1127,28 +1099,55 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50056624" sideWeight="0.51554126" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21858217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28013778" sideWeight="0.48445874" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21858217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23361976" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24328679" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39380023" sideWeight="0.485223" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39380023" sideWeight="0.485223" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28013778" sideWeight="0.48445874" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50056624" sideWeight="0.51554126" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21858217" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15145005" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39380023" sideWeight="0.485223" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28013778" sideWeight="0.48445874" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23684211" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32842582" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="processedProjectFiles" value="true" />
@@ -1164,24 +1163,6 @@
           <line>379</line>
           <properties />
           <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
-          <line>152</line>
-          <properties />
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
-          <line>171</line>
-          <properties />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java</url>
-          <line>186</line>
-          <properties />
-          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java</url>
@@ -1236,20 +1217,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="7" column="50" lean-forward="false" selection-start-line="7" selection-start-column="50" selection-end-line="7" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueSerializer.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/PriorityQueueDeserializer.java" />
     <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/common/serialization/LongSerializer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -1285,22 +1254,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1026">
-          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/pom.xml" />
     <entry file="file://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.pom">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1364,36 +1318,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="117" column="21" lean-forward="true" selection-start-line="108" selection-start-column="6" selection-end-line="117" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="59" column="29" lean-forward="false" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3186">
-          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FrequencyGpsData.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/model/FixedFrequencyGpsData.java" />
     <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoBean.java" />
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoFactory.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/lang/Class.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -1401,68 +1330,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="22" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="63" column="7" lean-forward="false" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="7" column="71" lean-forward="false" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="4" column="68" lean-forward="false" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="31" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoSerializer.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/com/chedaojunan/report/utils/ProtoTest.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/java/com/chedaojunan/report/utils/ProtoDeserializer.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaConsumerTest.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/KafkaConstants.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/local/kafkastream.properties" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/DatahubConstants.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/transformer/GpsDataTransformerSupplier.java" />
     <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-clients/1.0.1/kafka-clients-1.0.1.jar!/org/apache/kafka/clients/producer/ProducerConfig.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -1477,81 +1352,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4555">
-          <caret line="336" column="60" lean-forward="false" selection-start-line="336" selection-start-column="35" selection-end-line="336" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="33" column="91" lean-forward="false" selection-start-line="33" selection-start-column="91" selection-end-line="33" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2015">
-          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="9" selection-end-line="46" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="54" column="33" lean-forward="false" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="34" column="50" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="27" column="2" lean-forward="false" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/SampledDataCleanAndRet.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/src/main/java/com/chedaojunan/report/model/AutoGraspRequest.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/resources/prod/kafkastream.properties" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/local/logback.xml" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/logback.xml" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/core/src/main/resources/prod/core.properties" />
     <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/endpoint/logs/data-integration.log" />
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="60" />
-          <folding>
-            <element signature="e#2038#2039#0" expanded="true" />
-            <element signature="e#2070#2071#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2196">
-          <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/service/ExternalApiExecutorService.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/test/java/KafkaProducerTest001.java" />
     <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/logs/data-integration.log" />
     <entry file="jar://$USER_HOME$/.m2/repository/org/apache/kafka/kafka-streams/1.0.1/kafka-streams-1.0.1.jar!/org/apache/kafka/streams/StreamsConfig.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1560,40 +1369,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="91" column="72" lean-forward="false" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="126" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/README.md" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/utils/WriteDatahubUtil.java" />
+    <entry file="file://$PROJECT_DIR$/../kafkastream-datarich/integration/src/main/java/com/chedaojunan/report/DataEnrich.java" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>endpoint</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-access:1.2.1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

@@ -1,8 +1,0 @@
-2018-08-20 10:08:32.521 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
-2018-08-20 10:08:32.531 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient
-2018-08-20 11:22:17.166 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
-2018-08-20 11:22:17.169 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient
-2018-08-20 12:40:42.468 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
-2018-08-20 12:40:42.470 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient
-2018-08-20 13:51:58.416 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
-2018-08-20 13:51:58.418 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient
