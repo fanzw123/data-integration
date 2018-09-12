@@ -11,17 +11,17 @@ import java.util.List;
 
 public class SampledDataCleanAndRetTest {
 
-    List<FixedFrequencyGpsData> batchList;
-    ArrayList<FixedFrequencyGpsData> listSample = null;
-    FixedFrequencyGpsData gpsData;
+    List<FixedFrequencyAccessGpsData> batchList;
+    ArrayList<FixedFrequencyAccessGpsData> listSample = null;
+    FixedFrequencyAccessGpsData gpsData;
 
-    ArrayList<FixedFrequencyGpsData> batchList02;
-    ArrayList<FixedFrequencyGpsData> listSample02 = null;
-    FixedFrequencyGpsData gpsData02;
+    ArrayList<FixedFrequencyAccessGpsData> batchList02;
+    ArrayList<FixedFrequencyAccessGpsData> listSample02 = null;
+    FixedFrequencyAccessGpsData gpsData02;
 
-    ArrayList<FixedFrequencyGpsData> batchList03;
-    ArrayList<FixedFrequencyGpsData> listSample03 = null;
-    FixedFrequencyGpsData gpsData03;
+    ArrayList<FixedFrequencyAccessGpsData> batchList03;
+    ArrayList<FixedFrequencyAccessGpsData> listSample03 = null;
+    FixedFrequencyAccessGpsData gpsData03;
     List<FixedFrequencyIntegrationData> gaodeApiResponseList = null;
 
     SampledDataCleanAndRet sampledDataCleanAndRet = new SampledDataCleanAndRet();
@@ -31,7 +31,7 @@ public class SampledDataCleanAndRetTest {
         batchList = new ArrayList<>();
         // accessData数据设置
         for (int i = 0; i < 6; i++) {
-            gpsData = new FixedFrequencyGpsData();
+            gpsData = new FixedFrequencyAccessGpsData();
             gpsData.setDeviceId("70211191");
             gpsData.setDeviceImei("64691168800");
             gpsData.setTripId(i + 100 + "");
@@ -48,7 +48,7 @@ public class SampledDataCleanAndRetTest {
         batchList02 = new ArrayList<>();
         // accessData02数据设置
         for (int i = 0; i < 6; i++) {
-            gpsData02 = new FixedFrequencyGpsData();
+            gpsData02 = new FixedFrequencyAccessGpsData();
             gpsData02.setDeviceId("70211191");
             gpsData02.setDeviceImei("64691168800");
             gpsData02.setTripId(i + 100 + "");
@@ -70,7 +70,7 @@ public class SampledDataCleanAndRetTest {
         gaodeApiResponseList = new ArrayList<>();
         // accessData03数据设置
         for (int i = 0; i < 6; i++) {
-            gpsData03 = new FixedFrequencyGpsData();
+            gpsData03 = new FixedFrequencyAccessGpsData();
             gpsData03.setDeviceId("70211191");
             gpsData03.setDeviceImei("64691168800");
             gpsData03.setTripId(i + 100 + "");

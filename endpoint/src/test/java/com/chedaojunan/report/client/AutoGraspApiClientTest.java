@@ -32,10 +32,17 @@ public class AutoGraspApiClientTest {
 
   @Test
   public void testGetAutoGraspResponseValid() throws Exception {
-    String locationString = "116.496167,39.917066|116.496149,39.917205|116.496149,39.917326";
-    String timeString = "1434077500,1434077501,1434077510";
-    String speedString = "1.0,1.0,2.0";
-    String directionString = "1.0,1.0,2.0";
+
+//                             116.53804060861069,39.8416602942181|116.53801779197377,39.84164509345781|116.53800258027111,39.841629873043274
+    String locationString =   "116.53803873698,39.841658799914|116.538015950521,39.841643880209|116.538000759549,39.841628417969";
+    String timeString =       "1536635356,1536635357,1536635358";
+    String speedString =      "6.950603008270264,8.794337272644043,8.93331241607666";
+    String directionString =  "225.8,226.1,224.8";
+
+//    String locationString =   "116.496167,39.917066|116.496149,39.917205|116.496149,39.917326";
+//    String timeString =       "1434077500,1434077501,1434077510";
+//    String speedString =      "1.0,1.0,2.0";
+//    String directionString =  "1.0,1.0,2.0";
     autoGraspRequest = new AutoGraspRequest(apiKey, carId, locationString, timeString, directionString, speedString);
     AutoGraspResponse response = autoGraspApiClient.getAutoGraspResponse(autoGraspRequest);
     Assert.assertNotNull(response);

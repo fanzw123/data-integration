@@ -17,6 +17,8 @@ public class KafkaProducerTest001 {
 
   private Producer producer;
 
+  int n=1;
+
   public void runProducer(String inputTopic) {
 
     Properties configProperties = new Properties();
@@ -33,16 +35,17 @@ public class KafkaProducerTest001 {
 
     String serverTime = System.currentTimeMillis() + "";
 
-    for (int j = 1; j <= 500; j++) {
+    for (int j = 1; j <= 5; j++) {
+      n++;
       FixedFrequencyGpsData gpsData = new FixedFrequencyGpsData();
       gpsData.setDeviceImei("01test000"+j);
       gpsData.setDeviceId("01test000"+j);
       gpsData.setLocalTime((1521478861000l+j)+"");
       gpsData.setTripId("01test000");
       gpsData.setServerTime(serverTime);
-      gpsData.setLatitude(29.999921798706055+0.00001*j);
-      gpsData.setLongitude(121.2059555053711+0.00001*j);
-      gpsData.setAltitude(12.899999618530273);
+      gpsData.setLatitude(29.0000+0.0001*n);
+      gpsData.setLongitude(121.0000+0.0001*n);
+      gpsData.setAltitude(12.9999);
       gpsData.setDirection(111.4);
       gpsData.setGpsSpeed(77.1626205444336);
       try {

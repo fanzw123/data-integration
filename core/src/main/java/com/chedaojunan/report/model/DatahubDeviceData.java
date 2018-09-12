@@ -57,6 +57,9 @@ public class DatahubDeviceData extends FixedFrequencyIntegrationData {
         setAdCode(adCode);
         setTownCode(townCode);
 
+        setCorrectedLatitude(fixedFrequency.getCorrectedLatitude());
+        setCorrectedLongitude(fixedFrequency.getCorrectedLongitude());
+
     }
 
     @Override

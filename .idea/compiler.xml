@@ -13,10 +13,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="core" target="1.8" />
-      <module name="data-ingest" target="1.8" />
+      <module name="data-integration" target="1.8" />
       <module name="endpoint" target="1.8" />
       <module name="integration" target="1.8" />
-      <module name="kafkastream" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

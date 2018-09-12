@@ -31,8 +31,11 @@ public class AzimuthFromLogLatUtilTest {
 
   @Test
   public void testGetDistance() throws Exception {
-    double distance = azimuthFromLogLatUtil.getDistance(116.496167, 39.917066, 116.496149, 39.917205);
-    Assert.assertEquals((Double)16.0, (Double)distance);
+
+//    116.4952822100,39.9175257000|116.4952822100,39.9174057000|116.4952562100,39.9172457000
+
+//    double distance = azimuthFromLogLatUtil.getDistance(116.53800258027111,39.841629873043274,116.538000759549,  39.841628417969);
+//    Assert.assertEquals((Double)16.0, (Double)distance);
   }
 
 }

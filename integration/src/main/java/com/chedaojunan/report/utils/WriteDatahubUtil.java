@@ -100,6 +100,10 @@ public class WriteDatahubUtil {
                 entry.setString(21, integrationData.getAdCode());
                 entry.setString(22, integrationData.getTownCode());
 
+                // 增加修改经纬度
+                entry.setDouble(23, integrationData.getCorrectedLatitude());
+                entry.setDouble(24, integrationData.getCorrectedLongitude());
+
                 // 根据server_time设置，为空则根据系统当前时间
                 dateUtils = new DateUtils();
                 if (StringUtils.isNotEmpty(integrationData.getServerTime())) {
@@ -115,8 +119,8 @@ public class WriteDatahubUtil {
                     hm = dateUtils.getHour_After5M(times) + "_" + String.format("%02d", hm_temp);
                 }
 
-                entry.setString(23, ymd);
-                entry.setString(24, hm);
+                entry.setString(25, ymd);
+                entry.setString(26, hm);
 
                 // 写记录到不同的分片
                 String shardId = shards.get((int) (Math.random() * Integer.parseInt(topicShardNum)) % Integer.parseInt(topicShardNum)).getShardId();

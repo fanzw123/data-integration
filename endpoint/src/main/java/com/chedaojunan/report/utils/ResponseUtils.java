@@ -119,13 +119,16 @@ public class ResponseUtils {
     integrationData.setTrafficRequestTimesamp(requestTimestamp);
   }
 
-  public static void enrichDataWithCoordinateConvertResponse(FixedFrequencyGpsData gpsData, String coordinateConvertResponseGps) {
+  public static FixedFrequencyAccessGpsData enrichDataWithCoordinateConvertResponse(FixedFrequencyGpsData gpsData, String coordinateConvertResponseGps) {
+    FixedFrequencyAccessGpsData accessGpsData = null;
     try {
-      gpsData.setLongitude(Double.parseDouble(coordinateConvertResponseGps.split(Constants.COMMA)[0]));
-      gpsData.setLatitude(Double.parseDouble(coordinateConvertResponseGps.split(Constants.COMMA)[1]));
+      accessGpsData = new FixedFrequencyAccessGpsData(gpsData);
+      accessGpsData.setCorrectedLongitude(Double.parseDouble(coordinateConvertResponseGps.split(Constants.COMMA)[0]));
+      accessGpsData.setCorrectedLatitude(Double.parseDouble(coordinateConvertResponseGps.split(Constants.COMMA)[1]));
     } catch (Exception e) {
       logger.warn("parse gps string %s", e.getMessage());
     }
+    return accessGpsData;
 
   }
 

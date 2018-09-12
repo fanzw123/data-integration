@@ -24,7 +24,7 @@ public class CoordinateConvertClientTest {
 
   @Test
   public void testGetCoordinateConvertResponseValid() throws Exception {
-    String locationsString = "116.496167,39.917066|116.496149,39.917205|116.496149,39.917326";
+    String locationsString = "116.53215789794922,39.84053421020508|116.53213500976562,39.840518951416016|116.53211975097656,39.84050369262695";
     coordinateConvertRequest = new CoordinateConvertRequest(apiKey, locationsString, null);
     CoordinateConvertResponse response = coordinateConvertClient.getCoordinateConvertResponse(coordinateConvertRequest);
     Assert.assertNotNull(response);

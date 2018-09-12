@@ -1,6 +1,6 @@
 package com.chedaojunan.report.utils;
 
-import com.chedaojunan.report.model.FrequencyGpsData;
+import com.chedaojunan.report.model.GpsData;
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @author fanzw
  * @description: 序列化类
  */
-public class ProtoSerializer implements Serializer<FrequencyGpsData.FrequencyGps> {
+public class ProtoSerializer implements Serializer<GpsData.Gps> {
   private String encoding = "UTF8";
 
   @Override
@@ -23,7 +23,7 @@ public class ProtoSerializer implements Serializer<FrequencyGpsData.FrequencyGps
   }
 
   @Override
-  public byte[] serialize(String topic, FrequencyGpsData.FrequencyGps data) {
+  public byte[] serialize(String topic, GpsData.Gps data) {
     try {
       if (data == null)
         return null;
@@ -38,7 +38,6 @@ public class ProtoSerializer implements Serializer<FrequencyGpsData.FrequencyGps
 
   @Override
   public void close() {
-    //nothing to do
   }
 
 }

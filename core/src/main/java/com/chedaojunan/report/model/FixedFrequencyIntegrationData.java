@@ -4,7 +4,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class FixedFrequencyIntegrationData extends FixedFrequencyGpsData {
+public class FixedFrequencyIntegrationData extends FixedFrequencyAccessGpsData {
 
   @JsonProperty(value = "road_api_status")
   private int roadApiStatus		    ; // 抓路接口返回结果状态：0表示请求失败；1表示请求成功',
@@ -41,7 +41,7 @@ public class FixedFrequencyIntegrationData extends FixedFrequencyGpsData {
 
   public FixedFrequencyIntegrationData(){}
 
-  public FixedFrequencyIntegrationData(FixedFrequencyGpsData gpsData, GaoDeFusionReturn gaoDeFusionReturn) {
+  public FixedFrequencyIntegrationData(FixedFrequencyAccessGpsData gpsData, GaoDeFusionReturn gaoDeFusionReturn) {
     setDeviceImei(gpsData.getDeviceImei());
     setDeviceId(gpsData.getDeviceId());
     setLocalTime(gpsData.getLocalTime());
@@ -66,7 +66,7 @@ public class FixedFrequencyIntegrationData extends FixedFrequencyGpsData {
     setCongestionInfo(gaoDeFusionReturn.getCongestion_info());
   }
 
-  public FixedFrequencyIntegrationData(FixedFrequencyGpsData gpsData) {
+  public FixedFrequencyIntegrationData(FixedFrequencyAccessGpsData gpsData) {
     setDeviceImei(gpsData.getDeviceImei());
     setDeviceId(gpsData.getDeviceId());
     setLocalTime(gpsData.getLocalTime());

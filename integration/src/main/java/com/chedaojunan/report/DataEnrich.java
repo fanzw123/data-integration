@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import com.chedaojunan.report.client.RegeoClient;
 import com.chedaojunan.report.model.*;
 import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
+import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serde;
@@ -34,11 +35,6 @@ import com.chedaojunan.report.client.AutoGraspApiClient;
 import com.chedaojunan.report.serdes.ArrayListSerde;
 import com.chedaojunan.report.serdes.SerdeFactory;
 import com.chedaojunan.report.service.ExternalApiExecutorService;
-import com.chedaojunan.report.utils.FixedFrequencyGpsDataTimestampExtractor;
-import com.chedaojunan.report.utils.KafkaConstants;
-import com.chedaojunan.report.utils.ReadProperties;
-import com.chedaojunan.report.utils.SampledDataCleanAndRet;
-import com.chedaojunan.report.utils.WriteDatahubUtil;
 
 public class DataEnrich {
 
@@ -87,13 +83,15 @@ public class DataEnrich {
 //        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG,
 //                String.join(KafkaConstants.HYPHEN, kafkaApplicationName, UUID.randomUUID().toString()));
         streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
+//        streamsConfiguration.put(StreamsConfig.CLIENT_ID_CONFIG, "test001");
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
         streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 8);
         streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
         // Specify default (de)serializers for record keys and for record values.
-        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
-                Serdes.String().getClass().getName());
+//        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
+//                Serdes.String().getClass().getName());
+        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,
                 Serdes.String().getClass().getName());
         streamsConfiguration.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, FixedFrequencyGpsDataTimestampExtractor.class);
@@ -156,10 +154,10 @@ public class DataEnrich {
                         .map(
                             accessDataList -> ExternalApiExecutorService.getExecutorService().submit(() -> {
                                 // 坐标转化接口调用
-                                List<FixedFrequencyGpsData> coordinateConvertResponseList;
+                                List<FixedFrequencyAccessGpsData> coordinateConvertResponseList;
                                 coordinateConvertResponseList = SampledDataCleanAndRet.getCoordinateConvertResponseList(accessDataList);
-                                coordinateConvertResponseList.sort(SampledDataCleanAndRet.sortingByServerTime);
-                                ArrayList<FixedFrequencyGpsData> sampledDataList = SampledDataCleanAndRet.sampleKafkaData(new ArrayList<>(coordinateConvertResponseList));
+//                                coordinateConvertResponseList.sort(SampledDataCleanAndRet.sortingByServerTime);
+                                ArrayList<FixedFrequencyAccessGpsData> sampledDataList = SampledDataCleanAndRet.sampleKafkaData(new ArrayList<>(coordinateConvertResponseList));
                                 AutoGraspRequest autoGraspRequest = SampledDataCleanAndRet.autoGraspRequestRet(sampledDataList);
 //                                System.out.println("apiQuest: " + autoGraspRequest);
                                 logger.info("apiQuest:" + autoGraspRequest);

@@ -50,9 +50,9 @@ public class CoordinateConvertClient extends Client<CoordinateConvertResponse> {
     return ResponseUtils.convertStringToCoordinateConvertResponse(coordinateConvertResponseString);
   }
 
-  public List<FixedFrequencyGpsData> getCoordinateConvertFromResponse(List<FixedFrequencyGpsData> gpsDataListNew, CoordinateConvertRequest coordinateConvertRequest) {
+  public List<FixedFrequencyAccessGpsData> getCoordinateConvertFromResponse(List<FixedFrequencyGpsData> gpsDataListNew, CoordinateConvertRequest coordinateConvertRequest) {
 
-    List<FixedFrequencyGpsData> accessDataList = new ArrayList<>();
+    List<FixedFrequencyAccessGpsData> accessDataList = new ArrayList<>();
     CoordinateConvertResponse coordinateConvertResponse = getCoordinateConvertResponse(coordinateConvertRequest);
 
     List<String> coordinateConvertResponseGpsList = Arrays.asList(coordinateConvertResponse.getLocations().split(Constants.SEMICOLON));
@@ -61,9 +61,9 @@ public class CoordinateConvertClient extends Client<CoordinateConvertResponse> {
     for (int i = 0; i < gpsDataListNew.size(); i++) {
       gpsData = gpsDataListNew.get(i);
       if (!CollectionUtils.isEmpty(coordinateConvertResponseGpsList) && !StringUtils.isEmpty(coordinateConvertResponseGpsList.get(i))) {
-        ResponseUtils.enrichDataWithCoordinateConvertResponse(gpsData, coordinateConvertResponseGpsList.get(i));
+        FixedFrequencyAccessGpsData frequencyAccessGpsData = ResponseUtils.enrichDataWithCoordinateConvertResponse(gpsData, coordinateConvertResponseGpsList.get(i));
+        accessDataList.add(frequencyAccessGpsData);
       }
-      accessDataList.add(gpsData);
     }
 
     return accessDataList;
