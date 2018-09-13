@@ -1,4 +1,6 @@
 import com.chedaojunan.report.model.FixedFrequencyGpsData;
+import com.chedaojunan.report.model.FrequencyGpsData;
+import com.chedaojunan.report.utils.ProtoSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
@@ -29,28 +31,31 @@ public class KafkaProducerTest001 {
     configProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
             Serdes.String().serializer().getClass());
     configProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
-            Serdes.String().serializer().getClass());
+            ProtoSerializer.class);
 
     producer = new KafkaProducer(configProperties);
 
     String serverTime = System.currentTimeMillis() + "";
 
-    for (int j = 1; j <= 5; j++) {
+    for (int j = 1; j <= 500; j++) {
       n++;
-      FixedFrequencyGpsData gpsData = new FixedFrequencyGpsData();
+//      FixedFrequencyGpsData gpsData = new FixedFrequencyGpsData();
+
+      FrequencyGpsData.FrequencyGps.Builder gpsData = FrequencyGpsData.FrequencyGps.newBuilder();
       gpsData.setDeviceImei("01test000"+j);
       gpsData.setDeviceId("01test000"+j);
       gpsData.setLocalTime((1521478861000l+j)+"");
       gpsData.setTripId("01test000");
       gpsData.setServerTime(serverTime);
-      gpsData.setLatitude(29.0000+0.0001*n);
-      gpsData.setLongitude(121.0000+0.0001*n);
-      gpsData.setAltitude(12.9999);
-      gpsData.setDirection(111.4);
+      gpsData.setLat(29.0000+0.0001*n);
+      gpsData.setLongi(121.0000+0.0001*n);
+      gpsData.setAlt(12.9999);
+      gpsData.setDir(111.4);
       gpsData.setGpsSpeed(77.1626205444336);
+
       try {
 //        System.out.println(new ObjectMapper().writeValueAsString(gpsData));
-        producer.send(new ProducerRecord<>(inputTopic, gpsData.getDeviceId(), new ObjectMapper().writeValueAsString(gpsData)));
+        producer.send(new ProducerRecord<>(inputTopic, gpsData.getDeviceId(), gpsData.build()));
       } catch (Exception ex) {
         ex.printStackTrace();//handle exception here
       }

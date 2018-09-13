@@ -16,6 +16,7 @@ import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
 import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -91,9 +92,11 @@ public class DataEnrich {
         // Specify default (de)serializers for record keys and for record values.
 //        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
 //                Serdes.String().getClass().getName());
-        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,
-                Serdes.String().getClass().getName());
+//        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+        // protoc buffer
+        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, ProtoSeder.class.getName());
+
+        streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         streamsConfiguration.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, FixedFrequencyGpsDataTimestampExtractor.class);
         streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
 
@@ -115,20 +118,20 @@ public class DataEnrich {
 
         builder.addStateStore(rawDataStore);
 
-        KStream<String, String> kStream = builder.stream(inputTopic);
+        KStream<String, FrequencyGpsData.FrequencyGps> kStream = builder.stream(inputTopic);
 
         final KStream<String, String> orderedDataStream = kStream
                 .map(
-                        (key, rawDataString) ->
-                                new KeyValue<>(SampledDataCleanAndRet.convertToFixedGpsDataPojo(rawDataString).getDeviceId(), rawDataString)
+                        (key, frequencyGps) ->
+                                new KeyValue<>(frequencyGps.getDeviceId(), frequencyGps)
                 )
                 .groupByKey()
                 .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
                 .aggregate(
                         () -> new ArrayList<>(),
                         (windowedCarId, record, list) -> {
-                            if (!list.contains(record))
-                                list.add(record);
+                            if (!list.contains(record.toString()))
+                                list.add(record.toString());
                             return list;
                         },
                         Materialized.with(stringSerde, arrayListStringSerde)

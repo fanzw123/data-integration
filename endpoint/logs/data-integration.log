@@ -1,0 +1,32 @@
+2018-09-13 22:27:17.956 [main] INFO  com.chedaojunan.report.client.AutoGraspApiClient -Creating AutoGraspApiClient connection
+2018-09-13 22:27:17.959 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.AutoGraspApiClient
+2018-09-13 22:27:19.013 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 164 for API AUTO_GRASP_API 
+2018-09-13 22:27:19.048 [main] INFO  com.chedaojunan.report.client.RectangleTrafficInfoClient -Creating RectangleTrafficInfoApiClient connection
+2018-09-13 22:27:19.049 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.RectangleTrafficInfoClient
+2018-09-13 22:27:19.116 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 50 for API RECTANGLE_TRAFFIC_INFO_API 
+2018-09-13 22:27:19.264 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 92 for API RECTANGLE_TRAFFIC_INFO_API 
+2018-09-13 22:27:19.267 [main] INFO  com.chedaojunan.report.client.AutoGraspApiClient -Creating AutoGraspApiClient connection
+2018-09-13 22:27:19.267 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.AutoGraspApiClient
+2018-09-13 22:27:19.397 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 127 for API AUTO_GRASP_API 
+2018-09-13 22:27:19.398 [main] INFO  com.chedaojunan.report.client.RectangleTrafficInfoClient -Creating RectangleTrafficInfoApiClient connection
+2018-09-13 22:27:19.398 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.RectangleTrafficInfoClient
+2018-09-13 22:27:22.480 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 3079 for API RECTANGLE_TRAFFIC_INFO_API 
+2018-09-13 22:27:22.679 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 194 for API RECTANGLE_TRAFFIC_INFO_API 
+2018-09-13 22:27:22.725 [main] INFO  com.chedaojunan.report.client.AutoGraspApiClient -Creating AutoGraspApiClient connection
+2018-09-13 22:27:22.725 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.AutoGraspApiClient
+2018-09-13 22:27:25.890 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 3159 for API AUTO_GRASP_API 
+2018-09-13 22:27:25.917 [main] INFO  com.chedaojunan.report.client.AutoGraspApiClient -Creating AutoGraspApiClient connection
+2018-09-13 22:27:25.918 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.AutoGraspApiClient
+2018-09-13 22:27:26.076 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 125 for API AUTO_GRASP_API 
+2018-09-13 22:27:26.085 [main] INFO  com.chedaojunan.report.client.AutoGraspApiClient -Creating AutoGraspApiClient connection
+2018-09-13 22:27:26.085 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.AutoGraspApiClient
+2018-09-13 22:27:26.102 [main] INFO  com.chedaojunan.report.client.CoordinateConvertClient -Creating CoordinateConvertClient connection
+2018-09-13 22:27:26.102 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.CoordinateConvertClient
+2018-09-13 22:27:26.153 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 43 for API COORDINATE_CONVERT_API 
+2018-09-13 22:27:26.161 [main] INFO  com.chedaojunan.report.client.RectangleTrafficInfoClient -Creating RectangleTrafficInfoApiClient connection
+2018-09-13 22:27:26.162 [main] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.RectangleTrafficInfoClient
+2018-09-13 22:27:26.207 [ForkJoinPool-1-worker-1] INFO  com.chedaojunan.report.client.Client -api query latency: 107 for API AUTO_GRASP_API 
+2018-09-13 22:27:26.207 [ForkJoinPool-1-worker-1] INFO  com.chedaojunan.report.client.RectangleTrafficInfoClient -Creating RectangleTrafficInfoApiClient connection
+2018-09-13 22:27:26.207 [ForkJoinPool-1-worker-1] INFO  com.chedaojunan.report.client.Client -Configuring client for com.chedaojunan.report.client.RectangleTrafficInfoClient
+2018-09-13 22:27:26.270 [ForkJoinPool-1-worker-1] INFO  com.chedaojunan.report.client.Client -api query latency: 59 for API RECTANGLE_TRAFFIC_INFO_API 
+2018-09-13 22:27:26.291 [main] INFO  com.chedaojunan.report.client.Client -api query latency: 86 for API RECTANGLE_TRAFFIC_INFO_API 

@@ -77,6 +77,9 @@ public class FixedFrequencyIntegrationData extends FixedFrequencyAccessGpsData {
     setAltitude(gpsData.getAltitude());
     setDirection(gpsData.getDirection());
     setGpsSpeed(gpsData.getGpsSpeed());
+
+    setCorrectedLatitude(gpsData.getCorrectedLatitude());
+    setCorrectedLongitude(gpsData.getCorrectedLongitude());
   }
 
   public int getRoadApiStatus() {

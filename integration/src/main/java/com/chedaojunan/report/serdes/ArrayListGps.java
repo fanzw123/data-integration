@@ -1,6 +1,5 @@
 //package com.chedaojunan.report.serdes;
 //
-//import com.chedaojunan.report.model.GpsData;
 //import org.apache.kafka.common.serialization.Deserializer;
 //import org.apache.kafka.common.serialization.Serde;
 //import org.apache.kafka.common.serialization.Serdes;
@@ -11,7 +10,6 @@
 //
 //public class ArrayListGps<T> implements Serde<ArrayList<T>> {
 //
-//  private final GpsData<ArrayList<T>> inner;
 //
 //  public ArrayListGps(Serde<T> serde) {
 //    inner =
