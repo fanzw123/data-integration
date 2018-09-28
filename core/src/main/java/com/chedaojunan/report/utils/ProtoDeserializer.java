@@ -1,6 +1,6 @@
 package com.chedaojunan.report.utils;
 
-import com.chedaojunan.report.model.FrequencyGpsData;
+import com.cdja.cloud.data.proto.GpsProto;
 import org.apache.kafka.common.serialization.Deserializer;
 
 import java.util.Map;
@@ -24,7 +24,7 @@ public class ProtoDeserializer implements Deserializer {
 
   @Override
   public Object deserialize(String topic, byte[] data) {
-    FrequencyGpsData.FrequencyGps frequencyGps = ProtoFactory.getFrequencyGps(data);
+    GpsProto.Gps frequencyGps = ProtoFactory.getFrequencyGps(data);
     try {
       if (data == null)
         return null;

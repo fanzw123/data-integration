@@ -17,8 +17,8 @@ public class ExternalApiExecutorService {
   private static final int TIMEOUT_TO_CLOSE_EXECUTOR_SERVICE = 30;
   private static final String TIMEOUT_COUNTER_NAME = "timeout";
 
-//  private static ExecutorService executorService = Executors.newWorkStealingPool(Runtime.getRuntime().availableProcessors()*4);
-  private static ExecutorService executorService = Executors.newWorkStealingPool(16);
+  private static ExecutorService executorService = Executors.newWorkStealingPool(Runtime.getRuntime().availableProcessors()*2);
+//  private static ExecutorService executorService = Executors.newWorkStealingPool(16);
 
   private ExternalApiExecutorService() {}
 

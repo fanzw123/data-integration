@@ -1,5 +1,4 @@
 import com.chedaojunan.report.model.FixedFrequencyIntegrationData;
-import com.chedaojunan.report.model.FrequencyGpsData.FrequencyGps;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.kafka.clients.consumer.*;

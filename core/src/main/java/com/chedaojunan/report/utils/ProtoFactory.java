@@ -1,6 +1,6 @@
 package com.chedaojunan.report.utils;
 
-import com.chedaojunan.report.model.FrequencyGpsData;
+import com.cdja.cloud.data.proto.GpsProto;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 /**
@@ -8,25 +8,26 @@ import com.google.protobuf.InvalidProtocolBufferException;
  * @description: protoc工厂类
  */
 public class ProtoFactory {
-  public static FrequencyGpsData.FrequencyGps createProtoClass(FrequencyGpsData.FrequencyGps gpsData) {
-    FrequencyGpsData.FrequencyGps.Builder builder = FrequencyGpsData.FrequencyGps.newBuilder()
+  public static GpsProto.Gps createProtoClass(GpsProto.Gps gpsData) {
+
+    GpsProto.Gps.Builder builder = GpsProto.Gps.newBuilder()
             .setDeviceId(gpsData.getDeviceId())
             .setDeviceImei(gpsData.getDeviceImei())
             .setLocalTime(gpsData.getLocalTime())
-            .setTripId(gpsData.getTripId())
             .setServerTime(gpsData.getServerTime())
+            .setTripId(gpsData.getTripId())
             .setLat(gpsData.getLat())
             .setLongi(gpsData.getLongi())
             .setAlt(gpsData.getAlt())
-            .setDir(gpsData.getDir())
+            .setDirection(gpsData.getDirection())
             .setGpsSpeed(gpsData.getGpsSpeed());
 
     return builder.build();
   }
 
-  public static FrequencyGpsData.FrequencyGps getFrequencyGps(byte[] bytes) {
+  public static GpsProto.Gps getFrequencyGps(byte[] bytes) {
     try {
-      return FrequencyGpsData.FrequencyGps.parseFrom(bytes);
+      return GpsProto.Gps.parseFrom(bytes);
     } catch (InvalidProtocolBufferException e) {
       e.printStackTrace();
     }

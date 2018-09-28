@@ -10,13 +10,13 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.RegeoClient;
 import com.chedaojunan.report.model.*;
 import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
 import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -87,8 +87,11 @@ public class DataEnrich {
 //        streamsConfiguration.put(StreamsConfig.CLIENT_ID_CONFIG, "test001");
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
-        streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 8);
+//        streamsConfiguration.put(StreamsConfig.NUM_STANDBY_REPLICAS_CONFIG,2);
+//        streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "D:/data/kafka-streams001");
+        streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
         streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
+//        streamsConfiguration.put(StreamsConfig.producerPrefix(ProducerConfig.COMPRESSION_TYPE_CONFIG), "snappy");
         // Specify default (de)serializers for record keys and for record values.
 //        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
 //                Serdes.String().getClass().getName());
@@ -115,10 +118,11 @@ public class DataEnrich {
 
 
         WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
+        FixedFrequencyGpsData fixedFrequencyGpsData = new FixedFrequencyGpsData();
 
         builder.addStateStore(rawDataStore);
 
-        KStream<String, FrequencyGpsData.FrequencyGps> kStream = builder.stream(inputTopic);
+        KStream<String, GpsProto.Gps> kStream = builder.stream(inputTopic);
 
         final KStream<String, String> orderedDataStream = kStream
                 .map(
@@ -130,8 +134,9 @@ public class DataEnrich {
                 .aggregate(
                         () -> new ArrayList<>(),
                         (windowedCarId, record, list) -> {
-                            if (!list.contains(record.toString()))
-                                list.add(record.toString());
+                            if (!list.contains(record))
+                                SampledDataCleanAndRet.convertTofixedFrequencyGpsData(fixedFrequencyGpsData,record);
+                                list.add(fixedFrequencyGpsData.toString());
                             return list;
                         },
                         Materialized.with(stringSerde, arrayListStringSerde)
@@ -145,7 +150,7 @@ public class DataEnrich {
                 })
                 .flatMapValues(accessDataList -> accessDataList.stream().collect(Collectors.toList()));
 
-        //orderedDataStream.print();
+//        orderedDataStream.print();
         KStream<String, ArrayList<ArrayList<FixedFrequencyGpsData>>> dedupOrderedDataStream =
                 orderedDataStream.transform(new GpsDataTransformerSupplier(rawDataStore.name()), rawDataStore.name());
 

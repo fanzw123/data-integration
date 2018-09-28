@@ -1,13 +1,13 @@
 package com.chedaojunan.report.utils;
 
-import com.chedaojunan.report.model.FrequencyGpsData;
+import com.cdja.cloud.data.proto.GpsProto;
 import org.apache.kafka.common.serialization.Deserializer;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serializer;
 
 import java.util.Map;
 
-public class ProtoSeder implements Serde<FrequencyGpsData.FrequencyGps> {
+public class ProtoSeder implements Serde<GpsProto.Gps> {
 
     private ProtoSerializer serializer = new ProtoSerializer();
     private ProtoDeserializer deserializer = new ProtoDeserializer();
@@ -25,12 +25,12 @@ public class ProtoSeder implements Serde<FrequencyGpsData.FrequencyGps> {
     }
 
     @Override
-    public Serializer<FrequencyGpsData.FrequencyGps> serializer() {
+    public Serializer<GpsProto.Gps> serializer() {
         return serializer;
     }
 
     @Override
-    public Deserializer<FrequencyGpsData.FrequencyGps> deserializer() {
+    public Deserializer<GpsProto.Gps> deserializer() {
         return deserializer;
     }
 

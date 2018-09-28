@@ -1,7 +1,5 @@
-import com.chedaojunan.report.model.FixedFrequencyGpsData;
-import com.chedaojunan.report.model.FrequencyGpsData;
+import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.utils.ProtoSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -15,7 +13,8 @@ import java.util.Properties;
 public class KafkaProducerTest001 {
 
   private static final Logger logger = LoggerFactory.getLogger(KafkaProducerTest001.class);
-  private static final String BOOTSTRAP_SERVERS = "47.95.10.165:9092,47.93.24.115:9092,39.106.170.188:9092";
+//  private static final String BOOTSTRAP_SERVERS = "47.95.10.165:9092,47.93.24.115:9092,39.106.170.188:9092";
+  private static final String BOOTSTRAP_SERVERS = "123.56.223.119:9092,123.56.216.151:9092,47.94.98.137:9092";
 
   private Producer producer;
 
@@ -37,20 +36,21 @@ public class KafkaProducerTest001 {
 
     String serverTime = System.currentTimeMillis() + "";
 
-    for (int j = 1; j <= 500; j++) {
+    for (int j = 1; j <= 2; j++) {
       n++;
 //      FixedFrequencyGpsData gpsData = new FixedFrequencyGpsData();
 
-      FrequencyGpsData.FrequencyGps.Builder gpsData = FrequencyGpsData.FrequencyGps.newBuilder();
-      gpsData.setDeviceImei("01test000"+j);
+      GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
       gpsData.setDeviceId("01test000"+j);
+      gpsData.setDeviceImei("01test000"+j);
       gpsData.setLocalTime((1521478861000l+j)+"");
-      gpsData.setTripId("01test000");
       gpsData.setServerTime(serverTime);
-      gpsData.setLat(29.0000+0.0001*n);
-      gpsData.setLongi(121.0000+0.0001*n);
+      gpsData.setTripId("01test000");
+
+      gpsData.setLat(31.90791893005371+0.0001*n);
+      gpsData.setLongi(118.70845794677734+0.0001*n);
       gpsData.setAlt(12.9999);
-      gpsData.setDir(111.4);
+      gpsData.setDirection(111.4);
       gpsData.setGpsSpeed(77.1626205444336);
 
       try {
@@ -71,13 +71,13 @@ public class KafkaProducerTest001 {
 
   public static void main(String[] args) {
     KafkaProducerTest001 producerTest = new KafkaProducerTest001();
-    String inputTopic = "device_gps_test";
+    String inputTopic = "device_gps_tst";
     try {
-      int count =10;
+      int count =1;
       while(count>0){
         count--;
         long startTime = System.currentTimeMillis();
-        for (int i=0;i<60;i++) {
+        for (int i=0;i<1;i++) {
           producerTest.runProducer(inputTopic);
           Thread.sleep(650);
         }

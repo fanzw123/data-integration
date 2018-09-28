@@ -1,5 +1,6 @@
 package com.chedaojunan.report.utils;
 
+import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.CoordinateConvertClient;
 import com.chedaojunan.report.common.Constants;
 import com.chedaojunan.report.model.*;
@@ -307,47 +308,47 @@ public class SampledDataCleanAndRet {
     }*/
     }
 
-    public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
-        if (StringUtils.isEmpty(accessDataString))
-            return null;
-        FixedFrequencyGpsData accessData = new FixedFrequencyGpsData();
-        String deviceImei = accessDataString.split("\\n")[0].replace("\"","").split(":")[1].trim();
-        String deviceId = accessDataString.split("\\n")[1].replace("\"","").split(":")[1].trim();
-        String localTime = accessDataString.split("\\n")[2].replace("\"","").split(":")[1].trim();
-        String tripId = accessDataString.split("\\n")[3].replace("\"","").split(":")[1].trim();
-        String serverTime = accessDataString.split("\\n")[4].replace("\"","").split(":")[1].trim();
-        double latitude = Double.parseDouble(accessDataString.split("\\n")[5].replace("\"","").split(":")[1].trim());
-        double longitude = Double.parseDouble(accessDataString.split("\\n")[6].replace("\"","").split(":")[1].trim());
-        double altitude = Double.parseDouble(accessDataString.split("\\n")[7].replace("\"","").split(":")[1].trim());
-        double direction = Double.parseDouble(accessDataString.split("\\n")[8].replace("\"","").split(":")[1].trim());
-        double gpsSpeed = Double.parseDouble(accessDataString.split("\\n")[9].replace("\"","").split(":")[1].trim());
-
-        accessData.setDeviceImei(deviceImei);
-        accessData.setDeviceId(deviceId);
-        accessData.setLocalTime(localTime);
-        accessData.setTripId(tripId);
-        accessData.setServerTime(serverTime);
-        accessData.setLatitude(latitude);
-        accessData.setLongitude(longitude);
-        accessData.setAltitude(altitude);
-        accessData.setDirection(direction);
-        accessData.setGpsSpeed(gpsSpeed);
-
-        return accessData;
-    }
-
 //    public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
 //        if (StringUtils.isEmpty(accessDataString))
 //            return null;
-//        ObjectMapper objectMapper = ObjectMapperUtils.getObjectMapper();
-//        try {
-//            FixedFrequencyGpsData accessData = objectMapper.readValue(accessDataString, FixedFrequencyGpsData.class);
-//            return accessData;
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
+//        FixedFrequencyGpsData accessData = new FixedFrequencyGpsData();
+//        String deviceImei = accessDataString.split("\\n")[0].replace("\"","").split(":")[1].trim();
+//        String deviceId = accessDataString.split("\\n")[1].replace("\"","").split(":")[1].trim();
+//        String localTime = accessDataString.split("\\n")[2].replace("\"","").split(":")[1].trim();
+//        String tripId = accessDataString.split("\\n")[3].replace("\"","").split(":")[1].trim();
+//        String serverTime = accessDataString.split("\\n")[4].replace("\"","").split(":")[1].trim();
+//        double latitude = Double.parseDouble(accessDataString.split("\\n")[5].replace("\"","").split(":")[1].trim());
+//        double longitude = Double.parseDouble(accessDataString.split("\\n")[6].replace("\"","").split(":")[1].trim());
+//        double altitude = Double.parseDouble(accessDataString.split("\\n")[7].replace("\"","").split(":")[1].trim());
+//        double direction = Double.parseDouble(accessDataString.split("\\n")[8].replace("\"","").split(":")[1].trim());
+//        double gpsSpeed = Double.parseDouble(accessDataString.split("\\n")[9].replace("\"","").split(":")[1].trim());
+//
+//        accessData.setDeviceImei(deviceImei);
+//        accessData.setDeviceId(deviceId);
+//        accessData.setLocalTime(localTime);
+//        accessData.setTripId(tripId);
+//        accessData.setServerTime(serverTime);
+//        accessData.setLatitude(latitude);
+//        accessData.setLongitude(longitude);
+//        accessData.setAltitude(altitude);
+//        accessData.setDirection(direction);
+//        accessData.setGpsSpeed(gpsSpeed);
+//
+//        return accessData;
 //    }
+
+    public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
+        if (StringUtils.isEmpty(accessDataString))
+            return null;
+        ObjectMapper objectMapper = ObjectMapperUtils.getObjectMapper();
+        try {
+            FixedFrequencyGpsData accessData = objectMapper.readValue(accessDataString, FixedFrequencyGpsData.class);
+            return accessData;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static FixedFrequencyIntegrationData convertToFixedFrequencyIntegrationDataPojo(String integrationDataString) {
         if (StringUtils.isEmpty(integrationDataString))
@@ -408,4 +409,16 @@ public class SampledDataCleanAndRet {
         return coordinateConvertResponseList;
     }
 
+    public static void convertTofixedFrequencyGpsData(FixedFrequencyGpsData fixedFrequencyGpsData, GpsProto.Gps gps) {
+        fixedFrequencyGpsData.setDeviceId(gps.getDeviceId());
+        fixedFrequencyGpsData.setDeviceImei(gps.getDeviceImei());
+        fixedFrequencyGpsData.setLocalTime(gps.getLocalTime());
+        fixedFrequencyGpsData.setServerTime(gps.getServerTime());
+        fixedFrequencyGpsData.setTripId(gps.getTripId());
+        fixedFrequencyGpsData.setLatitude(gps.getLat());
+        fixedFrequencyGpsData.setLongitude(gps.getLongi());
+        fixedFrequencyGpsData.setAltitude(gps.getAlt());
+        fixedFrequencyGpsData.setGpsSpeed(gps.getGpsSpeed());
+        fixedFrequencyGpsData.setDirection(gps.getDirection());
+    }
 }

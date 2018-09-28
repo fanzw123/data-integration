@@ -13,6 +13,12 @@
   <artifactId>core</artifactId>
 
   <dependencies>
+
+    <dependency>
+      <groupId>com.cdja.cloud</groupId>
+      <artifactId>cloud-common-data</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>com.google.protobuf</groupId>
       <artifactId>protobuf-java</artifactId>
