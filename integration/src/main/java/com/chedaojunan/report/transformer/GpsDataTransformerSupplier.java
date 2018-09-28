@@ -7,10 +7,12 @@ import com.chedaojunan.report.utils.ReadProperties;
 import com.chedaojunan.report.utils.SampledDataCleanAndRet;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.streams.KeyValue;
+import org.apache.kafka.streams.errors.InvalidStateStoreException;
 import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.kstream.TransformerSupplier;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.processor.PunctuationType;
+import org.apache.kafka.streams.processor.StateStore;
 import org.apache.kafka.streams.state.KeyValueIterator;
 import org.apache.kafka.streams.state.KeyValueStore;
 
@@ -45,11 +47,24 @@ public class GpsDataTransformerSupplier
 
       private ProcessorContext context;
 
+      private StateStore waitUntilStoreIsQueryable(String stateStoreName) throws InterruptedException {
+        while(true){
+          try{
+            return context.getStateStore(stateStoreName);
+          } catch(InvalidStateStoreException e){
+            Thread.sleep(100);
+          }
+        }
+      }
+
       @SuppressWarnings("unchecked")
       @Override
       public void init(ProcessorContext context) {
-        stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) context.getStateStore(stateStoreName);
-
+        try {
+          stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) waitUntilStoreIsQueryable(stateStoreName);
+        } catch(InterruptedException e) {
+          e.printStackTrace();
+        }
         this.context = context;
         this.context.schedule(schedulePunctuateInMilliSeconds, PunctuationType.WALL_CLOCK_TIME, (timestamp) -> {
           //LocalDateTime dateTime =
@@ -67,7 +82,12 @@ public class GpsDataTransformerSupplier
       }
 
       public ArrayList<ArrayList<FixedFrequencyGpsData>> outputToDownstream() {
-        KeyValueIterator<String, ArrayList<FixedFrequencyGpsData>> iter = this.stateStore.all();
+        try {
+          stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) waitUntilStoreIsQueryable(stateStoreName);
+        } catch(InterruptedException e) {
+          e.printStackTrace();
+        }
+        KeyValueIterator<String, ArrayList<FixedFrequencyGpsData>> iter = stateStore.all();
         ArrayList<String> currentEventTimeWindowList = new ArrayList<>();
         ArrayList<ArrayList<FixedFrequencyGpsData>> allDeviceAccessDataList = new ArrayList<>();
         while (iter.hasNext()) {
