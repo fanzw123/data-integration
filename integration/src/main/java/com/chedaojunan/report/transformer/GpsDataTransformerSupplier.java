@@ -60,11 +60,8 @@ public class GpsDataTransformerSupplier
       @SuppressWarnings("unchecked")
       @Override
       public void init(ProcessorContext context) {
-        try {
-          stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) waitUntilStoreIsQueryable(stateStoreName);
-        } catch(InterruptedException e) {
-          e.printStackTrace();
-        }
+        stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) context.getStateStore(stateStoreName);
+
         this.context = context;
         this.context.schedule(schedulePunctuateInMilliSeconds, PunctuationType.WALL_CLOCK_TIME, (timestamp) -> {
           //LocalDateTime dateTime =
@@ -155,7 +152,17 @@ public class GpsDataTransformerSupplier
         //String currentWindowKey = key;
         String previousWindowKey = String.join(KafkaConstants.HYPHEN, stateStoreKey, "previous");
 
+        try {
+          stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) waitUntilStoreIsQueryable(stateStoreName);
+        } catch(InterruptedException e) {
+          e.printStackTrace();
+        }
         ArrayList<FixedFrequencyGpsData> currentEventList = stateStore.get(stateStoreKey);
+        try {
+          stateStore = (KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>) waitUntilStoreIsQueryable(stateStoreName);
+        } catch(InterruptedException e) {
+          e.printStackTrace();
+        }
         ArrayList<FixedFrequencyGpsData> previousEventList = stateStore.get(previousWindowKey);
 
         if (CollectionUtils.isEmpty(previousEventList) ||
