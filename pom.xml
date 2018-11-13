@@ -179,6 +179,17 @@
     </dependencies>
   </dependencyManagement>
 
+  <repositories>
+    <repository>
+      <id>local</id>
+      <url>file://${user.home}/.m2/repository/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+
+  </repositories>
+
   <build>
     <!--<resources>-->
       <!--<resource>-->

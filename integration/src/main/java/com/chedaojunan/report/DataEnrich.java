@@ -150,7 +150,7 @@ public class DataEnrich {
                 })
                 .flatMapValues(accessDataList -> accessDataList.stream().collect(Collectors.toList()));
 
-//        orderedDataStream.print();
+        orderedDataStream.print();
         KStream<String, ArrayList<ArrayList<FixedFrequencyGpsData>>> dedupOrderedDataStream =
                 orderedDataStream.transform(new GpsDataTransformerSupplier(rawDataStore.name()), rawDataStore.name());
 
