@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serde;
@@ -10,7 +11,11 @@ import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Printed;
+import org.apache.kafka.streams.kstream.Produced;
+import org.apache.kafka.streams.kstream.TimeWindows;
+import org.apache.kafka.streams.kstream.Windowed;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
@@ -21,13 +26,17 @@ import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.AutoGraspApiClient;
 import com.chedaojunan.report.client.RegeoClient;
 import com.chedaojunan.report.model.FixedFrequencyGpsData;
+import com.chedaojunan.report.model.FixedFrequencyIntegrationData;
 import com.chedaojunan.report.serdes.ArrayListSerde;
 import com.chedaojunan.report.serdes.SerdeFactory;
 import com.chedaojunan.report.utils.FixedFrequencyGpsDataTimestampExtractor;
 import com.chedaojunan.report.utils.KafkaConstants;
 import com.chedaojunan.report.utils.ProtoSeder;
 import com.chedaojunan.report.utils.ReadProperties;
+import com.chedaojunan.report.utils.SampledDataCleanAndRet;
 import com.chedaojunan.report.utils.WriteDatahubUtil;
+
+import com.chedaojunan.report.transformer.DataDuduplicationTransformer;
 
 public class DataEnrichTest {
 
@@ -42,9 +51,15 @@ public class DataEnrichTest {
 
   private static final Serde<String> stringSerde;
 
-  private static final Serde<FixedFrequencyGpsData> fixedFrequencyAccessDataSerde;
+  private static final Serde<FixedFrequencyGpsData> fixedFrequencyGpsDataSerde;
+
+  private static final Serde<FixedFrequencyIntegrationData> fixedFrequencyIntegrationSerde;
 
   private static final ArrayListSerde<String> arrayListStringSerde;
+
+  private static final ArrayListSerde<FixedFrequencyGpsData> arrayListFixedFrequencyGpsSerde;
+
+  private static final ArrayListSerde<FixedFrequencyIntegrationData> arrayListFixedFrequencyIntegrationSerde;
 
   private static RegeoClient regeoClient;
 
@@ -54,8 +69,11 @@ public class DataEnrichTest {
     kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
     stringSerde = Serdes.String();
     Map<String, Object> serdeProp = new HashMap<>();
-    fixedFrequencyAccessDataSerde = SerdeFactory.createSerde(FixedFrequencyGpsData.class, serdeProp);
+    fixedFrequencyGpsDataSerde = SerdeFactory.createSerde(FixedFrequencyGpsData.class, serdeProp);
+    fixedFrequencyIntegrationSerde = SerdeFactory.createSerde(FixedFrequencyIntegrationData.class, serdeProp);
     arrayListStringSerde = new ArrayListSerde<>(stringSerde);
+    arrayListFixedFrequencyGpsSerde = new ArrayListSerde<>(fixedFrequencyGpsDataSerde);
+    arrayListFixedFrequencyIntegrationSerde = new ArrayListSerde<>(fixedFrequencyIntegrationSerde);
     kafkaWindowLengthInSeconds = Integer.parseInt(kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION));
     autoGraspApiClient = AutoGraspApiClient.getInstance();
     regeoClient = RegeoClient.getInstance();
@@ -111,10 +129,10 @@ public class DataEnrichTest {
     final Properties streamsConfiguration = getStreamConfig();
 
     StreamsBuilder builder = new StreamsBuilder();
-    StoreBuilder<KeyValueStore<String, ArrayList<String>>> dedupStoreBuilder = Stores.keyValueStoreBuilder(
+    StoreBuilder<KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>> dedupStoreBuilder = Stores.keyValueStoreBuilder(
         Stores.persistentKeyValueStore(dedupStoreName),
         Serdes.String(),
-        arrayListStringSerde);
+        arrayListFixedFrequencyGpsSerde);
 
     builder.addStateStore(dedupStoreBuilder);
 
@@ -124,7 +142,31 @@ public class DataEnrichTest {
 
     KStream<String, GpsProto.Gps> inputStream = builder.stream(inputTopic);
 
-    inputStream.print(Printed.toSysOut());
+    KStream<Windowed<String>, ArrayList<FixedFrequencyGpsData>> windowedRawData = inputStream
+        .groupByKey()
+        .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
+        .aggregate(
+            () -> new ArrayList<>(),
+            (windowedCarId, record, list) -> {
+              if (!list.contains(record)) {
+                SampledDataCleanAndRet.convertTofixedFrequencyGpsData(fixedFrequencyGpsData, record);
+                list.add(fixedFrequencyGpsData);
+              }
+              return list;
+            },
+            Materialized.with(stringSerde, arrayListFixedFrequencyGpsSerde)
+        )
+        .toStream();
+
+    //windowedRawData.print(Printed.toSysOut());
+
+    windowedRawData
+        .transform(
+            () -> new DataDuduplicationTransformer(),
+            dedupStoreName
+        ).print(Printed.toSysOut());
+        //.to(outputTopic, Produced.with(stringSerde, arrayListFixedFrequencyIntegrationSerde));
+
 
     /*final KStream<String, String> orderedDataStream = kStream
         .map(
