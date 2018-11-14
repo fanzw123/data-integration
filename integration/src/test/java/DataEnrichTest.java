@@ -1,43 +1,37 @@
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
-import com.cdja.cloud.data.proto.GpsProto;
-import com.chedaojunan.report.client.RegeoClient;
-import com.chedaojunan.report.model.*;
-import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
-import com.chedaojunan.report.utils.*;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.Materialized;
-import org.apache.kafka.streams.kstream.TimeWindows;
+import org.apache.kafka.streams.kstream.Printed;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.AutoGraspApiClient;
+import com.chedaojunan.report.client.RegeoClient;
+import com.chedaojunan.report.model.FixedFrequencyGpsData;
 import com.chedaojunan.report.serdes.ArrayListSerde;
 import com.chedaojunan.report.serdes.SerdeFactory;
-import com.chedaojunan.report.service.ExternalApiExecutorService;
+import com.chedaojunan.report.utils.FixedFrequencyGpsDataTimestampExtractor;
+import com.chedaojunan.report.utils.KafkaConstants;
+import com.chedaojunan.report.utils.ProtoSeder;
+import com.chedaojunan.report.utils.ReadProperties;
+import com.chedaojunan.report.utils.WriteDatahubUtil;
 
 public class DataEnrichTest {
 
-  private static final Logger logger = LoggerFactory.getLogger(DataEnrich.class);
+  private static final Logger logger = LoggerFactory.getLogger(DataEnrichTest.class);
   private static final long TIMEOUT_PER_GAODE_API_REQUEST_IN_NANO_SECONDS = 10000000000L;
 
   private static Properties kafkaProperties = null;
@@ -81,13 +75,13 @@ public class DataEnrichTest {
 
     sampledRawDataStream.start();
 
-    final KafkaStreams testWriteStream = buildDataStream1(outputTopic);
+    //final KafkaStreams testWriteStream = buildDataStream1(outputTopic);
 
-    testWriteStream.start();
+    //testWriteStream.start();
 
     // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
     Runtime.getRuntime().addShutdownHook(new Thread(sampledRawDataStream::close));
-    Runtime.getRuntime().addShutdownHook(new Thread(testWriteStream::close));
+    //Runtime.getRuntime().addShutdownHook(new Thread(testWriteStream::close));
   }
 
   private static Properties getStreamConfig() {
@@ -122,15 +116,15 @@ public class DataEnrichTest {
         Serdes.String(),
         arrayListStringSerde);
 
-    builder.addStateStore(rawDataStore);
+    builder.addStateStore(dedupStoreBuilder);
 
     WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
     FixedFrequencyGpsData fixedFrequencyGpsData = new FixedFrequencyGpsData();
 
 
-    KStream<String, GpsProto.Gps> kStream = builder.stream(inputTopic);
+    KStream<String, GpsProto.Gps> inputStream = builder.stream(inputTopic);
 
-    kStream
+    inputStream.print(Printed.toSysOut());
 
     /*final KStream<String, String> orderedDataStream = kStream
         .map(
