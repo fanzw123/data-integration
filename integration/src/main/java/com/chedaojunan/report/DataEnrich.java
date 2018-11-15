@@ -135,7 +135,7 @@ public class DataEnrich {
                         () -> new ArrayList<>(),
                         (windowedCarId, record, list) -> {
                             if (!list.contains(record))
-                                SampledDataCleanAndRet.convertTofixedFrequencyGpsData(fixedFrequencyGpsData,record);
+                                SampledDataCleanAndRet.convertTofixedFrequencyGpsData(record);
                                 list.add(fixedFrequencyGpsData.toString());
                             return list;
                         },

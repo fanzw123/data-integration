@@ -32,9 +32,9 @@ public class SampledDataCleanAndRet {
     }
 
     @SuppressWarnings("unchecked")
-    public static Comparator<FixedFrequencyGpsData> sortingByServerTime =
-            (o1, o2) -> (int) (Long.parseLong(o1.getServerTime()) -
-                    Long.parseLong(o2.getServerTime()));
+    public static Comparator<FixedFrequencyGpsData> sortingByLocalTime =
+            (o1, o2) -> (int) (Long.parseLong(o1.getLocalTime()) -
+                    Long.parseLong(o2.getLocalTime()));
 
     // 60s数据采样返回
     public static ArrayList<FixedFrequencyAccessGpsData> sampleKafkaData(List<FixedFrequencyAccessGpsData> batchList) {
@@ -409,7 +409,8 @@ public class SampledDataCleanAndRet {
         return coordinateConvertResponseList;
     }
 
-    public static void convertTofixedFrequencyGpsData(FixedFrequencyGpsData fixedFrequencyGpsData, GpsProto.Gps gps) {
+    public static FixedFrequencyGpsData convertTofixedFrequencyGpsData( GpsProto.Gps gps) {
+        FixedFrequencyGpsData fixedFrequencyGpsData = new FixedFrequencyGpsData();
         fixedFrequencyGpsData.setDeviceId(gps.getDeviceId());
         fixedFrequencyGpsData.setDeviceImei(gps.getDeviceImei());
         fixedFrequencyGpsData.setLocalTime(gps.getLocalTime());
@@ -420,5 +421,7 @@ public class SampledDataCleanAndRet {
         fixedFrequencyGpsData.setAltitude(gps.getAlt());
         fixedFrequencyGpsData.setGpsSpeed(gps.getGpsSpeed());
         fixedFrequencyGpsData.setDirection(gps.getDirection());
+
+        return fixedFrequencyGpsData;
     }
 }

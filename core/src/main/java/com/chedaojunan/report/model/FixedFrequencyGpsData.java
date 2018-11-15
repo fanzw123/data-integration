@@ -162,15 +162,15 @@ public class FixedFrequencyGpsData {
     FixedFrequencyGpsData rhs = ((FixedFrequencyGpsData) other);
     return new EqualsBuilder()
         .append(deviceId, rhs.deviceId)
-        .append(deviceImei, rhs.deviceImei)
         .append(localTime, rhs.localTime)
+        /*.append(deviceImei, rhs.deviceImei)
         .append(serverTime, rhs.serverTime)
         .append(tripId, rhs.tripId)
         .append(latitude, rhs.latitude)
         .append(longitude, rhs.longitude)
         .append(altitude, rhs.altitude)
         .append(direction, rhs.direction)
-        .append(gpsSpeed, rhs.gpsSpeed)
+        .append(gpsSpeed, rhs.gpsSpeed)*/
         .isEquals();
   }
 
