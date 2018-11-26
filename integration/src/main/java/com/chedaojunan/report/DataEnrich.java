@@ -17,6 +17,7 @@ import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
 import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -88,9 +89,13 @@ public class DataEnrich {
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
 //        streamsConfiguration.put(StreamsConfig.NUM_STANDBY_REPLICAS_CONFIG,2);
-//        streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "D:/data/kafka-streams001");
+        streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.STATE_DIR_CONFIG));
         streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
         streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
+
+        // RecordTooLargeException
+        streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
+
 //        streamsConfiguration.put(StreamsConfig.producerPrefix(ProducerConfig.COMPRESSION_TYPE_CONFIG), "snappy");
         // Specify default (de)serializers for record keys and for record values.
 //        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
@@ -118,7 +123,6 @@ public class DataEnrich {
 
 
         WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
-        FixedFrequencyGpsData fixedFrequencyGpsData = new FixedFrequencyGpsData();
 
         builder.addStateStore(rawDataStore);
 
@@ -135,8 +139,7 @@ public class DataEnrich {
                         () -> new ArrayList<>(),
                         (windowedCarId, record, list) -> {
                             if (!list.contains(record))
-                                SampledDataCleanAndRet.convertTofixedFrequencyGpsData(record);
-                                list.add(fixedFrequencyGpsData.toString());
+                                list.add(SampledDataCleanAndRet.convertTofixedFrequencyGpsData(record).toString());
                             return list;
                         },
                         Materialized.with(stringSerde, arrayListStringSerde)

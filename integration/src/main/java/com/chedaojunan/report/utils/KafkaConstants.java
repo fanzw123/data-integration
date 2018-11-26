@@ -17,4 +17,6 @@ public class KafkaConstants {
 
   public static final String COORDINATE_CONVERT_LENGTH = "coordinate.convert.length";
 
+  public static final String STATE_DIR_CONFIG = "kafka.state.dir.config";
+
 }
