@@ -50,6 +50,7 @@ public class KafkaProducerTest001 {
       gpsData.setAlt(12.9999);
       gpsData.setDirection(111.4);
       gpsData.setGpsSpeed(77.1626205444336);
+      gpsData.setFlagGpsLoss(111222);
 
       try {
 //        System.out.println(new ObjectMapper().writeValueAsString(gpsData));

@@ -18,6 +18,7 @@ public class FixedFrequencyAccessGpsData extends FixedFrequencyGpsData {
     setAltitude(accessData.getAltitude());
     setGpsSpeed(accessData.getGpsSpeed());
     setDirection(accessData.getDirection());
+    setFlagGpsLoss(accessData.getFlagGpsLoss());
 
     setCorrectedLatitude(correctedLatitude);
     setCorrectedLongitude(correctedLongitude);
@@ -35,6 +36,7 @@ public class FixedFrequencyAccessGpsData extends FixedFrequencyGpsData {
     setAltitude(accessData.getAltitude());
     setGpsSpeed(accessData.getGpsSpeed());
     setDirection(accessData.getDirection());
+    setFlagGpsLoss(accessData.getFlagGpsLoss());
   }
 
   public double getCorrectedLatitude() {

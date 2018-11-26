@@ -41,6 +41,7 @@ public class DatahubDeviceData extends FixedFrequencyIntegrationData {
         setAltitude(fixedFrequency.getAltitude());
         setDirection(fixedFrequency.getDirection());
         setGpsSpeed(fixedFrequency.getGpsSpeed());
+        setFlagGpsLoss(fixedFrequency.getFlagGpsLoss());
 
         setRoadApiStatus(fixedFrequency.getRoadApiStatus());
         setCrosspoint(fixedFrequency.getCrosspoint());

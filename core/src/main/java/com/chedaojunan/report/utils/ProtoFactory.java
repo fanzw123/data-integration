@@ -20,7 +20,8 @@ public class ProtoFactory {
             .setLongi(gpsData.getLongi())
             .setAlt(gpsData.getAlt())
             .setDirection(gpsData.getDirection())
-            .setGpsSpeed(gpsData.getGpsSpeed());
+            .setGpsSpeed(gpsData.getGpsSpeed())
+            .setFlagGpsLoss(gpsData.getFlagGpsLoss());
 
     return builder.build();
   }

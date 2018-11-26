@@ -154,6 +154,7 @@ public class WriteDatahubUtil {
 
       entry.setString(25, ymd);
       entry.setString(26, hm);
+      entry.setBigint(27, (long) integrationData.getFlagGpsLoss());
 
       // 写记录到不同的分片
       String shardId = shards.get((int) (Math.random() * Integer.parseInt(topicShardNum)) % Integer.parseInt(topicShardNum)).getShardId();

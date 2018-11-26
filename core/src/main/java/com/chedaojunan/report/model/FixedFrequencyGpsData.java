@@ -43,6 +43,10 @@ public class FixedFrequencyGpsData {
   @JsonProperty(value = "gpsSpeed")
   private double gpsSpeed	    ; // GPS速度
 
+  @JsonProperty(value = "flagGpsLoss")
+  private int flagGpsLoss	    ; // 表示该时刻GPS数据是否为GPS信号不好丢失情况下生成的不准确数据
+                                  // 其值只能为0或1：1 为丢失 ， 0 为未丢失
+
   public FixedFrequencyGpsData(){}
 
   public String getDeviceImei() {
@@ -125,6 +129,14 @@ public class FixedFrequencyGpsData {
     this.direction = direction;
   }
 
+  public int getFlagGpsLoss() {
+    return flagGpsLoss;
+  }
+
+  public void setFlagGpsLoss(int flagGpsLoss) {
+    this.flagGpsLoss = flagGpsLoss;
+  }
+
   @Override
   public String toString() {
     ObjectMapper mapper = new ObjectMapper();
@@ -148,6 +160,7 @@ public class FixedFrequencyGpsData {
         .append(altitude)
         .append(direction)
         .append(gpsSpeed)
+        .append(flagGpsLoss)
         .toHashCode();
   }
 

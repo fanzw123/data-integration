@@ -275,6 +275,7 @@ public class SampledDataCleanAndRet {
         integrationData.setAltitude(accessData.getAltitude());
         integrationData.setGpsSpeed(accessData.getGpsSpeed());
         integrationData.setDirection(accessData.getDirection());
+        integrationData.setFlagGpsLoss(accessData.getFlagGpsLoss());
 
         integrationData.setCorrectedLatitude(accessData.getCorrectedLatitude());
         integrationData.setCorrectedLongitude(accessData.getCorrectedLongitude());
@@ -421,6 +422,7 @@ public class SampledDataCleanAndRet {
         fixedFrequencyGpsData.setAltitude(gps.getAlt());
         fixedFrequencyGpsData.setGpsSpeed(gps.getGpsSpeed());
         fixedFrequencyGpsData.setDirection(gps.getDirection());
+        fixedFrequencyGpsData.setFlagGpsLoss(gps.getFlagGpsLoss());
 
         return fixedFrequencyGpsData;
     }
