@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class KafkaProducerTest005 {
 
-  private static final Logger logger = LoggerFactory.getLogger(KafkaProducerTest001.class);
+  private static final Logger logger = LoggerFactory.getLogger(KafkaProducerTest005.class);
   private static final String BOOTSTRAP_SERVERS = "123.56.223.119:9092,123.56.216.151:9092,47.94.98.137:9092";
 
   private Producer producer;
@@ -42,10 +42,10 @@ public class KafkaProducerTest005 {
       GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
       gpsData.setDeviceId("05test000" + j);
       gpsData.setDeviceImei("05test000" + j);
-//      if (i % 2 == 0)
-//        gpsData.setLocalTime("1521478861000" + i);
-//      else
-//        gpsData.setLocalTime("15214788610000");
+      if (i % 2 == 0)
+        gpsData.setLocalTime("1521478861000" + i);
+      else
+        gpsData.setLocalTime("15214788610000");
       gpsData.setLocalTime(serverTime);
       System.out.println("05test000" + j+" ; serverTime=: "+ serverTime);
       gpsData.setServerTime(serverTime);
@@ -55,6 +55,7 @@ public class KafkaProducerTest005 {
       gpsData.setAlt(12.9999);
       gpsData.setDirection(111.4);
       gpsData.setGpsSpeed(77.1626205444336);
+      gpsData.setFlagGpsLoss(111222);
 
       try {
 //        System.out.println(gpsData.toString());

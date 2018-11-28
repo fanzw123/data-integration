@@ -118,9 +118,11 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
     //operateOnWindowRawData(testList).stream().forEach(System.out::println);
     //System.out.println("======");
 
-    long nextWindowEnd = windowedKey.window().end() + TimeUnit.SECONDS.toMillis(schedulePunctuateInMilliSeconds);
+    /*long nextWindowEnd = windowedKey.window().end() + TimeUnit.SECONDS.toMillis(schedulePunctuateInMilliSeconds);
     String nextWindowKey = String.join("-", windowId.substring(0, windowId.indexOf("-")), String.valueOf(nextWindowEnd));
-    KeyValueIterator<String, ArrayList<FixedFrequencyGpsData>> iterator = rawDataStore.range(windowId, nextWindowKey);
+    KeyValueIterator<String, ArrayList<FixedFrequencyGpsData>> iterator = rawDataStore.range(windowId, nextWindowKey);*/
+
+    KeyValueIterator<String, ArrayList<FixedFrequencyGpsData>> iterator = rawDataStore.all();
     while (iterator.hasNext()) {
       KeyValue<String, ArrayList<FixedFrequencyGpsData>> entry = iterator.next();
       if (!windowedDeviceId.equals(entry.key)) {

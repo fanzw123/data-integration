@@ -89,7 +89,7 @@ public class DataEnrich {
         streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
                 kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
 //        streamsConfiguration.put(StreamsConfig.NUM_STANDBY_REPLICAS_CONFIG,2);
-        streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.STATE_DIR_CONFIG));
+        //streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.STATE_DIR_CONFIG));
         streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
         streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
 
