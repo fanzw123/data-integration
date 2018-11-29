@@ -89,13 +89,13 @@ public class DataEnrichTest {
 
     rawDataToEnrichedStream.start();
 
-    //final KafkaStreams writeToDatahubStream = buildWriteToDatahubStream(outputTopic);
+    final KafkaStreams writeToDatahubStream = buildWriteToDatahubStream(outputTopic);
 
-    //writeToDatahubStream.start();
+    writeToDatahubStream.start();
 
     // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
     Runtime.getRuntime().addShutdownHook(new Thread(rawDataToEnrichedStream::close));
-    //Runtime.getRuntime().addShutdownHook(new Thread(writeToDatahubStream::close));
+    Runtime.getRuntime().addShutdownHook(new Thread(writeToDatahubStream::close));
   }
 
   private static Properties getStreamConfigRawDataToEnriched() {
@@ -116,7 +116,7 @@ public class DataEnrichTest {
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
-    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/Users/qianz/Documents/Misc/Work-beijing/rawData/");
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/Users/qianz/Documents/Misc/Work-beijing/rawData1/");
 
     return streamsConfiguration;
   }
@@ -134,8 +134,6 @@ public class DataEnrichTest {
 
     KStream<String, GpsProto.Gps> inputStream = builder.stream(inputTopic);
 
-    inputStream.print(Printed.toSysOut());
-
     KStream<Windowed<String>, ArrayList<FixedFrequencyGpsData>> windowedRawData = inputStream
         .groupByKey()
         .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
@@ -151,8 +149,6 @@ public class DataEnrichTest {
             Materialized.with(stringSerde, arrayListFixedFrequencyGpsSerde)
         )
         .toStream();
-
-    windowedRawData.print(Printed.toSysOut());
 
     windowedRawData
         .transform(

@@ -35,19 +35,19 @@ public class KafkaProducerTest004 {
 
     String serverTime = System.currentTimeMillis()+"";
 
-    for (int j = 0; j < 100; j++) {
+    for (int j = 0; j < 10; j++) {
       n++;
       GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
-      gpsData.setDeviceId("05test0000" + j);
-      gpsData.setDeviceImei("05test0000" + j);
+      gpsData.setDeviceId("04test0000" + j);
+      gpsData.setDeviceImei("04test0000" + j);
 //      if (i % 2 == 0)
 //        gpsData.setLocalTime("1521478861000" + i);
 //      else
 //        gpsData.setLocalTime("15214788610000");
       gpsData.setLocalTime(serverTime);
-      System.out.println("05test000" + j+" ; serverTime=: "+ serverTime);
+      System.out.println("04test000" + j+" ; serverTime=: "+ serverTime);
       gpsData.setServerTime(serverTime);
-      gpsData.setTripId("05test000");
+      gpsData.setTripId("04test000");
       gpsData.setLat(31.90791893005371 + 0.0001 * n);
       gpsData.setLongi(118.70845794677734 + 0.0001 * n);
       gpsData.setAlt(12.9999);
@@ -75,7 +75,7 @@ public class KafkaProducerTest004 {
     KafkaProducerTest004 producerTest = new KafkaProducerTest004();
     String inputTopic = "deviceGpsProtoTest";
     try {
-      for (int i = 1; i <= 60; i++) {
+      for (int i = 1; i <= 10; i++) {
         producerTest.runProducer(inputTopic, i);
         Thread.sleep(200);
       }

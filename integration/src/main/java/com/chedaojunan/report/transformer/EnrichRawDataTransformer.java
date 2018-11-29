@@ -113,8 +113,10 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
       schedulerMap.get(windowId).cancel();
 
     ArrayList<FixedFrequencyGpsData> rawDataList = rawDataStore.get(windowedDeviceId);
-    if(CollectionUtils.isNotEmpty(rawDataList))
+    if(CollectionUtils.isNotEmpty(rawDataList)) {
       context.forward(windowedDeviceId, operateOnWindowRawData(rawDataList));
+      rawDataStore.delete(windowedDeviceId);
+    }
     //operateOnWindowRawData(testList).stream().forEach(System.out::println);
     //System.out.println("======");
 
@@ -128,8 +130,10 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
       if (!windowedDeviceId.equals(entry.key)) {
         System.out.println("extra data: " + entry.key);
         rawDataList = rawDataStore.get(entry.key);
-        if(CollectionUtils.isNotEmpty(rawDataList))
+        if(CollectionUtils.isNotEmpty(rawDataList)){
           context.forward(windowedDeviceId, operateOnWindowRawData(rawDataList));
+          rawDataStore.delete(entry.key);
+        }
         //operateOnWindowRawData(testList).stream().forEach(System.out::println);
         //System.out.println("======");
       }
