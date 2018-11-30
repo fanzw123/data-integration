@@ -1,10 +1,8 @@
 package com.chedaojunan.report.transformer;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
+import com.chedaojunan.report.utils.ReadProperties;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.Transformer;
@@ -25,17 +23,21 @@ import com.chedaojunan.report.utils.SampledDataCleanAndRet;
 
 public class EnrichRawDataTransformer implements Transformer<Windowed<String>, ArrayList<FixedFrequencyGpsData>, KeyValue<String, ArrayList<FixedFrequencyIntegrationData>>> {
 
-  private static final String storeName = "testStateStore";
+  private static final String storeName;
+
+  private static Properties kafkaProperties = null;
 
   private ProcessorContext context;
 
   private static int schedulePunctuateInMilliSeconds;
 
   static {
-    /*schedulePunctuateInMilliSeconds = Integer.parseInt(
-        ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME, KafkaConstants.KAFKA_WINDOW_DURATION)
-    ) * 1000;*/
-    schedulePunctuateInMilliSeconds = 60000; // for test only
+    kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
+    schedulePunctuateInMilliSeconds = Integer.parseInt(
+            kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION)
+    ) * 60000;
+//    schedulePunctuateInMilliSeconds = 60000; // for test only
+    storeName = kafkaProperties.getProperty(KafkaConstants.DEDUP_STORE_NAME);
   }
 
   /**

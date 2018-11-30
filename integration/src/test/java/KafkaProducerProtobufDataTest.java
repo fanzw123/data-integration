@@ -36,7 +36,7 @@ public class KafkaProducerProtobufDataTest {
 
     String serverTime = System.currentTimeMillis()+"";
 
-    for (int j = 0; j < 1000; j++) {
+    for (int j = 0; j < 100; j++) {
       n++;
       GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
       gpsData.setDeviceId("04test0000" + j);

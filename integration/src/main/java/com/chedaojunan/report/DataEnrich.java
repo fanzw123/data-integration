@@ -11,6 +11,7 @@ import com.chedaojunan.report.transformer.EnrichRawDataTransformer;
 import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.Consumed;
@@ -37,7 +38,7 @@ public class DataEnrich {
 
   private static Properties kafkaProperties = null;
 
-  private static final String dedupStoreName = "testStateStore";
+  private static final String dedupStoreName;
 
   private static final int kafkaWindowLengthInSeconds;
 
@@ -63,6 +64,7 @@ public class DataEnrich {
     arrayListFixedFrequencyIntegrationSerde = new ArrayListSerde<>(fixedFrequencyIntegrationSerde);
     kafkaWindowLengthInSeconds = Integer.parseInt(kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION));
     regeoClient = RegeoClient.getInstance();
+    dedupStoreName = kafkaProperties.getProperty(KafkaConstants.DEDUP_STORE_NAME);
   }
 
   public static void main(String[] args) {
@@ -90,12 +92,14 @@ public class DataEnrich {
 
   private static Properties getStreamConfigRawDataToEnriched() {
     final Properties streamsConfiguration = new Properties();
-    String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.KAFKA_STREAM_APPLICATION_NAME);
+    String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.RAWDATA_STREAM_APPLICATION_NAME);
     streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
     streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
         kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
     //streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
     streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
+    // RecordTooLargeException
+    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
 
     // protoc buffer
     streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, ProtoSeder.class.getName());
@@ -106,7 +110,7 @@ public class DataEnrich {
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
-    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/home/integration/shell/rawData/");
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.RAWDATA_STATE_DIR_CONFIG));
 
     return streamsConfiguration;
   }
@@ -152,12 +156,13 @@ public class DataEnrich {
 
   private static Properties getStreamConfigWriteToDatahub() {
     final Properties streamsConfiguration = new Properties();
-    //String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.KAFKA_STREAM_APPLICATION_NAME);
-    String kafkaApplicationName = "write-to-datahub";
+    String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.WRITE_DATAHUB_STREAM_APPLICATION_NAME);
     streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
     streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
         kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
     streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 100000);
+    // RecordTooLargeException
+    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
 
     streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
 
@@ -165,7 +170,7 @@ public class DataEnrich {
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
-    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/home/integration/shell/datahub/");
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.WRITE_DATAHUB_STATE_DIR_CONFIG));
 
     return streamsConfiguration;
   }
@@ -190,8 +195,8 @@ public class DataEnrich {
         try {
           // 整合数据入库datahub
           if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
-            System.out.println("write to DataHub: " + Instant.now().toString() + "enrichedDataOver.size(): " + enrichedDataOver.size());
-            logger.info("write to DataHub: " + Instant.now().toString() + "enrichedDataOver.size(): " + enrichedDataOver.size());
+            System.out.println("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
+            logger.info("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
             writeDatahubUtil.putRecords(enrichedDataOver);
           }
         } catch (Exception e) {
