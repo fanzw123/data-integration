@@ -1,211 +1,206 @@
 package com.chedaojunan.report;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
 import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.RegeoClient;
-import com.chedaojunan.report.model.*;
-import com.chedaojunan.report.transformer.GpsDataTransformerSupplier;
+import com.chedaojunan.report.model.DatahubDeviceData;
+import com.chedaojunan.report.model.FixedFrequencyGpsData;
+import com.chedaojunan.report.model.FixedFrequencyIntegrationData;
+import com.chedaojunan.report.serdes.ArrayListSerde;
+import com.chedaojunan.report.serdes.SerdeFactory;
+import com.chedaojunan.report.transformer.EnrichRawDataTransformer;
 import com.chedaojunan.report.utils.*;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.Consumed;
 import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
-import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.Materialized;
-import org.apache.kafka.streams.kstream.TimeWindows;
+import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
 import org.apache.kafka.streams.state.Stores;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.chedaojunan.report.client.AutoGraspApiClient;
-import com.chedaojunan.report.serdes.ArrayListSerde;
-import com.chedaojunan.report.serdes.SerdeFactory;
-import com.chedaojunan.report.service.ExternalApiExecutorService;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class DataEnrich {
 
-    private static final Logger logger = LoggerFactory.getLogger(DataEnrich.class);
-    private static final long TIMEOUT_PER_GAODE_API_REQUEST_IN_NANO_SECONDS = 10000000000L;
+  private static final Logger logger = LoggerFactory.getLogger(DataEnrich.class);
 
-    private static Properties kafkaProperties = null;
+  private static Properties kafkaProperties = null;
 
-    private static final int kafkaWindowLengthInSeconds;
+  private static final String dedupStoreName = "testStateStore";
 
-    private static final Serde<String> stringSerde;
+  private static final int kafkaWindowLengthInSeconds;
 
-    private static final Serde<FixedFrequencyGpsData> fixedFrequencyAccessDataSerde;
+  private static final Serde<String> stringSerde;
 
-    private static final ArrayListSerde<String> arrayListStringSerde;
+  private static final Serde<FixedFrequencyGpsData> fixedFrequencyGpsDataSerde;
 
-    private static RegeoClient regeoClient;
+  private static final Serde<FixedFrequencyIntegrationData> fixedFrequencyIntegrationSerde;
 
-    private static AutoGraspApiClient autoGraspApiClient;
+  private static final ArrayListSerde<FixedFrequencyGpsData> arrayListFixedFrequencyGpsSerde;
 
-    static {
-        kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
-        stringSerde = Serdes.String();
-        Map<String, Object> serdeProp = new HashMap<>();
-        fixedFrequencyAccessDataSerde = SerdeFactory.createSerde(FixedFrequencyGpsData.class, serdeProp);
-        arrayListStringSerde = new ArrayListSerde<>(stringSerde);
-        kafkaWindowLengthInSeconds = Integer.parseInt(kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION));
-        autoGraspApiClient = AutoGraspApiClient.getInstance();
-        regeoClient = RegeoClient.getInstance();
-    }
+  private static final ArrayListSerde<FixedFrequencyIntegrationData> arrayListFixedFrequencyIntegrationSerde;
 
-    public static void main(String[] args) {
-        String rawDataTopic = kafkaProperties.getProperty(KafkaConstants.KAFKA_RAW_DATA_TOPIC);
+  private static RegeoClient regeoClient;
 
-        final KafkaStreams sampledRawDataStream = buildDataStream(rawDataTopic);
+  static {
+    kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
+    stringSerde = Serdes.String();
+    Map<String, Object> serdeProp = new HashMap<>();
+    fixedFrequencyGpsDataSerde = SerdeFactory.createSerde(FixedFrequencyGpsData.class, serdeProp);
+    fixedFrequencyIntegrationSerde = SerdeFactory.createSerde(FixedFrequencyIntegrationData.class, serdeProp);
+    arrayListFixedFrequencyGpsSerde = new ArrayListSerde<>(fixedFrequencyGpsDataSerde);
+    arrayListFixedFrequencyIntegrationSerde = new ArrayListSerde<>(fixedFrequencyIntegrationSerde);
+    kafkaWindowLengthInSeconds = Integer.parseInt(kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION));
+    regeoClient = RegeoClient.getInstance();
+  }
 
-        sampledRawDataStream.start();
+  public static void main(String[] args) {
+    String rawDataTopic = kafkaProperties.getProperty(KafkaConstants.KAFKA_RAW_DATA_TOPIC);
+    String outputTopic = kafkaProperties.getProperty(KafkaConstants.KAFKA_OUTPUT_TOPIC);
 
-        // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
-        Runtime.getRuntime().addShutdownHook(new Thread(sampledRawDataStream::close));
-    }
+    /*
+     * 1. sample data within the window
+     * 2. make gaode API calls
+     * 3. enrich raw data within the window and output to the output topic
+     */
 
-    private static Properties getStreamConfig() {
-        final Properties streamsConfiguration = new Properties();
-        String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.KAFKA_STREAM_APPLICATION_NAME);
-//        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG,
-//                String.join(KafkaConstants.HYPHEN, kafkaApplicationName, UUID.randomUUID().toString()));
-        streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
-//        streamsConfiguration.put(StreamsConfig.CLIENT_ID_CONFIG, "test001");
-        streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
-                kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
-//        streamsConfiguration.put(StreamsConfig.NUM_STANDBY_REPLICAS_CONFIG,2);
-        //streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.STATE_DIR_CONFIG));
-        streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
-        streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
+    final KafkaStreams rawDataToEnrichedStream = buildRawDataToEnrichedStream(rawDataTopic, outputTopic);
 
-        // RecordTooLargeException
-        streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
+    rawDataToEnrichedStream.start();
 
-//        streamsConfiguration.put(StreamsConfig.producerPrefix(ProducerConfig.COMPRESSION_TYPE_CONFIG), "snappy");
-        // Specify default (de)serializers for record keys and for record values.
-//        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
-//                Serdes.String().getClass().getName());
-//        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        // protoc buffer
-        streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, ProtoSeder.class.getName());
+    final KafkaStreams writeToDatahubStream = buildWriteToDatahubStream(outputTopic);
 
-        streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
-        streamsConfiguration.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, FixedFrequencyGpsDataTimestampExtractor.class);
-        streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
+    writeToDatahubStream.start();
 
-        return streamsConfiguration;
-    }
+    // Add shutdown hook to respond to SIGTERM and gracefully close Kafka Streams
+    Runtime.getRuntime().addShutdownHook(new Thread(rawDataToEnrichedStream::close));
+    Runtime.getRuntime().addShutdownHook(new Thread(writeToDatahubStream::close));
+  }
 
-    static KafkaStreams buildDataStream(String inputTopic) {
-        final Properties streamsConfiguration = getStreamConfig();
+  private static Properties getStreamConfigRawDataToEnriched() {
+    final Properties streamsConfiguration = new Properties();
+    String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.KAFKA_STREAM_APPLICATION_NAME);
+    streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
+    streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
+        kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
+    //streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
+    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
 
-        StreamsBuilder builder = new StreamsBuilder();
-        StoreBuilder<KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>> rawDataStore = Stores.keyValueStoreBuilder(
-                Stores.persistentKeyValueStore("rawDataStoreNew"),
-                Serdes.String(),
-                new ArrayListSerde(fixedFrequencyAccessDataSerde))
-                .withCachingEnabled();
+    // protoc buffer
+    streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, ProtoSeder.class.getName());
+    streamsConfiguration.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
 
+    streamsConfiguration.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, FixedFrequencyGpsDataTimestampExtractor.class);
+    streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
+    // disable cache
+    streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+    // Use a temporary directory for storing state, which will be automatically removed after the test.
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/home/integration/shell/rawData/");
 
-        WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
+    return streamsConfiguration;
+  }
 
-        builder.addStateStore(rawDataStore);
+  static KafkaStreams buildRawDataToEnrichedStream(String inputTopic, String outputTopic) {
+    final Properties streamsConfiguration = getStreamConfigRawDataToEnriched();
 
-        KStream<String, GpsProto.Gps> kStream = builder.stream(inputTopic);
+    StreamsBuilder builder = new StreamsBuilder();
+    StoreBuilder<KeyValueStore<String, ArrayList<FixedFrequencyGpsData>>> dedupStoreBuilder = Stores.keyValueStoreBuilder(
+        Stores.persistentKeyValueStore(dedupStoreName),
+        Serdes.String(),
+        arrayListFixedFrequencyGpsSerde);
 
-        final KStream<String, String> orderedDataStream = kStream
-                .map(
-                        (key, frequencyGps) ->
-                                new KeyValue<>(frequencyGps.getDeviceId(), frequencyGps)
-                )
-                .groupByKey()
-                .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
-                .aggregate(
-                        () -> new ArrayList<>(),
-                        (windowedCarId, record, list) -> {
-                            if (!list.contains(record))
-                                list.add(SampledDataCleanAndRet.convertTofixedFrequencyGpsData(record).toString());
-                            return list;
-                        },
-                        Materialized.with(stringSerde, arrayListStringSerde)
-                )
-                .toStream()
-                .map((windowedString, accessDataList) -> {
-                    long windowStartTime = windowedString.window().start();
-                    long windowEndTime = windowedString.window().end();
-                    String dataKey = String.join("-", String.valueOf(windowStartTime), String.valueOf(windowEndTime));
-                    return new KeyValue<>(dataKey, accessDataList);
-                })
-                .flatMapValues(accessDataList -> accessDataList.stream().collect(Collectors.toList()));
+    builder.addStateStore(dedupStoreBuilder);
 
-        orderedDataStream.print();
-        KStream<String, ArrayList<ArrayList<FixedFrequencyGpsData>>> dedupOrderedDataStream =
-                orderedDataStream.transform(new GpsDataTransformerSupplier(rawDataStore.name()), rawDataStore.name());
+    KStream<String, GpsProto.Gps> inputStream = builder.stream(inputTopic);
 
-        dedupOrderedDataStream
-            .flatMapValues(accessDataLists -> {
-                ArrayList<DatahubDeviceData> enrichedDataList = new ArrayList<>();
-                List<Future<?>> futures = accessDataLists
-                        .stream()
-                        .map(
-                            accessDataList -> ExternalApiExecutorService.getExecutorService().submit(() -> {
-                                // 坐标转化接口调用
-                                List<FixedFrequencyAccessGpsData> coordinateConvertResponseList;
-                                coordinateConvertResponseList = SampledDataCleanAndRet.getCoordinateConvertResponseList(accessDataList);
-//                                coordinateConvertResponseList.sort(SampledDataCleanAndRet.sortingByServerTime);
-                                ArrayList<FixedFrequencyAccessGpsData> sampledDataList = SampledDataCleanAndRet.sampleKafkaData(new ArrayList<>(coordinateConvertResponseList));
-                                AutoGraspRequest autoGraspRequest = SampledDataCleanAndRet.autoGraspRequestRet(sampledDataList);
-//                                System.out.println("apiQuest: " + autoGraspRequest);
-                                logger.info("apiQuest:" + autoGraspRequest);
-                                List<FixedFrequencyIntegrationData> gaodeApiResponseList = new ArrayList<>();
-                                if (autoGraspRequest != null)
-                                    gaodeApiResponseList = autoGraspApiClient.getTrafficInfoFromAutoGraspResponse(autoGraspRequest);
-                                ArrayList<FixedFrequencyIntegrationData> enrichedData = SampledDataCleanAndRet.dataIntegration(coordinateConvertResponseList, sampledDataList, gaodeApiResponseList);
+    KStream<Windowed<String>, ArrayList<FixedFrequencyGpsData>> windowedRawData = inputStream
+        .groupByKey()
+        .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
+        .aggregate(
+            () -> new ArrayList<>(),
+            (windowedCarId, record, list) -> {
+              FixedFrequencyGpsData fixedFrequencyGpsData = SampledDataCleanAndRet.convertTofixedFrequencyGpsData(record);
+              if (!list.contains(fixedFrequencyGpsData)) {
+                list.add(fixedFrequencyGpsData);
+              }
+              return list;
+            },
+            Materialized.with(stringSerde, arrayListFixedFrequencyGpsSerde)
+        )
+        .toStream();
 
-                                ArrayList<DatahubDeviceData> enrichedDataOver = null;
-                                if (enrichedData != null) {
-                                    enrichedDataOver = regeoClient.getRegeoFromResponse(enrichedData);
-                                }
-                                if (enrichedDataOver != null) {
-                                    try {
-                                        // 整合数据入库datahub
-                                        if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
-//                                            System.out.println("write to DataHub: " + Instant.now().toString() + ", enrichedDataOver.size(): " + enrichedDataOver.size());
-                                            logger.info("write to DataHub: " + Instant.now().toString() + ", enrichedDataOver.size(): " + enrichedDataOver.size());
-                                            writeDatahubUtil.putRecords(enrichedDataOver);
-                                        }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
+    windowedRawData
+        .transform(
+            () -> new EnrichRawDataTransformer(),
+            dedupStoreName
+        )//.print(Printed.toSysOut());
+        .to(outputTopic, Produced.with(stringSerde, arrayListFixedFrequencyIntegrationSerde));
 
-//                                    enrichedDataOver
-//                                            .stream()
-//                                            .forEach(data -> enrichedDataList.add(data));
-                                }
-                            })
-                        ).collect(Collectors.toList());
-                    ExternalApiExecutorService.getFuturesWithTimeout(futures, TIMEOUT_PER_GAODE_API_REQUEST_IN_NANO_SECONDS, "calling Gaode API");
+    return new KafkaStreams(builder.build(), streamsConfiguration);
+  }
 
-                    return enrichedDataList;
-                });
+  private static Properties getStreamConfigWriteToDatahub() {
+    final Properties streamsConfiguration = new Properties();
+    //String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.KAFKA_STREAM_APPLICATION_NAME);
+    String kafkaApplicationName = "write-to-datahub";
+    streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
+    streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
+        kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
+    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 100000);
 
-        return new KafkaStreams(builder.build(), streamsConfiguration);
+    streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
 
-    }
+    streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, TimeUnit.SECONDS.toMillis(10));
+    // disable cache
+    streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
+    // Use a temporary directory for storing state, which will be automatically removed after the test.
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, "/home/integration/shell/datahub/");
+
+    return streamsConfiguration;
+  }
+
+  static KafkaStreams buildWriteToDatahubStream(String inputTopic) {
+    final Properties streamsConfiguration = getStreamConfigWriteToDatahub();
+
+    StreamsBuilder builder = new StreamsBuilder();
+
+    WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
+
+    KStream<String, ArrayList<FixedFrequencyIntegrationData>> writeToDataHubStream =
+        builder.stream(inputTopic, Consumed.with(stringSerde, arrayListFixedFrequencyIntegrationSerde));
+    writeToDataHubStream.print(Printed.toSysOut());
+
+    writeToDataHubStream.foreach((windowedDeviceId, enrichedDataList) -> {
+      ArrayList<DatahubDeviceData> enrichedDataOver = null;
+      if (enrichedDataList != null) {
+        enrichedDataOver = regeoClient.getRegeoFromResponse(enrichedDataList);
+      }
+      if (enrichedDataOver != null) {
+        try {
+          // 整合数据入库datahub
+          if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
+            System.out.println("write to DataHub: " + Instant.now().toString() + "enrichedDataOver.size(): " + enrichedDataOver.size());
+            logger.info("write to DataHub: " + Instant.now().toString() + "enrichedDataOver.size(): " + enrichedDataOver.size());
+            writeDatahubUtil.putRecords(enrichedDataOver);
+          }
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    });
+
+    return new KafkaStreams(builder.build(), streamsConfiguration);
+  }
 
 }

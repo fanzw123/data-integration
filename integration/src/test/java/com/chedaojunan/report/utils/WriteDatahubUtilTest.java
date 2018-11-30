@@ -1,7 +1,9 @@
 package com.chedaojunan.report.utils;
 
 import com.chedaojunan.report.model.DatahubDeviceData;
+import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +41,7 @@ public class WriteDatahubUtilTest {
         // 增加 adCode和townCode
         integrationData.setAdCode("101010");
         integrationData.setTownCode("1010101010");
-
+        integrationData.setFlagGpsLoss(0);
         // json格式
         String congestion_info = "{\"description\":\"北三环路：从安华桥到苏州桥严重拥堵，蓟门桥附近自西向东行驶缓慢；北四环路：学院桥附近自东向西严重拥堵，安慧桥附近自东向西行驶缓慢；京藏高速：北沙滩桥附近出京方向行驶缓慢。\",\"evaluation\":{\"expedite\":\"44.44%\",\"congested\":\"44.44%\",\"blocked\":\"11.11%\",\"unknown\":\"0.01%\",\"status\":\"3\",\"description\":\"中度拥堵\"}}";
         integrationData.setCongestionInfo(congestion_info);
@@ -48,11 +50,11 @@ public class WriteDatahubUtilTest {
         integrationDataList.add(integrationData);
     }
 
-//    @Test
-//    public void testPutRecords() {
+    @Test
+    public void testPutRecords() {
 //        WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
 //        int failNum = writeDatahubUtil.putRecords(integrationDataList);
 //        Assert.assertEquals(0, failNum);
-//    }
+    }
 
 }

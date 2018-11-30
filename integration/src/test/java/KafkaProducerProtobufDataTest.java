@@ -10,10 +10,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class KafkaProducerTest004 {
+public class KafkaProducerProtobufDataTest {
 
-  private static final Logger logger = LoggerFactory.getLogger(KafkaProducerTest004.class);
+  private static final Logger logger = LoggerFactory.getLogger(KafkaProducerProtobufDataTest.class);
   private static final String BOOTSTRAP_SERVERS = "123.56.223.119:9092,123.56.216.151:9092,47.94.98.137:9092";
+  private static final String INPUT_TOPIC = "deviceGpsProtoTest";
 
   private Producer producer;
 
@@ -35,7 +36,7 @@ public class KafkaProducerTest004 {
 
     String serverTime = System.currentTimeMillis()+"";
 
-    for (int j = 0; j < 10; j++) {
+    for (int j = 0; j < 1000; j++) {
       n++;
       GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
       gpsData.setDeviceId("04test0000" + j);
@@ -56,7 +57,6 @@ public class KafkaProducerTest004 {
       gpsData.setFlagGpsLoss(0);
 
       try {
-//        System.out.println(gpsData.toString());
         producer.send(new ProducerRecord<>(inputTopic, gpsData.getDeviceId(), gpsData.build()));
       } catch (Exception ex) {
         ex.printStackTrace();//handle exception here
@@ -72,16 +72,15 @@ public class KafkaProducerTest004 {
   }
 
   public static void main(String[] args) {
-    KafkaProducerTest004 producerTest = new KafkaProducerTest004();
-    String inputTopic = "deviceGpsProtoTest";
+    KafkaProducerProtobufDataTest producerTest = new KafkaProducerProtobufDataTest();
     try {
-      for (int i = 1; i <= 10; i++) {
-        producerTest.runProducer(inputTopic, i);
-        Thread.sleep(200);
+      for (int i = 1; i <= 60; i++) {
+        producerTest.runProducer(INPUT_TOPIC, i);
+        Thread.sleep(400);
       }
     } catch (Exception e) {
     }
     producerTest.close();
-
   }
+
 }

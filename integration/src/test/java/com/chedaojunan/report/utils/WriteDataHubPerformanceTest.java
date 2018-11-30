@@ -1,14 +1,9 @@
-import com.chedaojunan.report.model.DatahubDeviceData;
-import com.chedaojunan.report.utils.WriteDatahubUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+package com.chedaojunan.report.utils;
 
+import com.chedaojunan.report.model.DatahubDeviceData;
 import java.util.ArrayList;
 
-public class DataHubTest {
-
-  private static final Logger logger = LoggerFactory.getLogger(DataHubTest.class);
-
+public class WriteDataHubPerformanceTest {
 
   public void runDatahub(int i) {
 
@@ -31,6 +26,7 @@ public class DataHubTest {
         accessData.setAltitude(30.98);
         accessData.setDirection(98.00);
         accessData.setGpsSpeed(98.00);
+        accessData.setFlagGpsLoss(0);
 
         list.add(accessData);
       }
@@ -48,7 +44,7 @@ public class DataHubTest {
   }
 
   public static void main(String[] args) {
-    DataHubTest dataHubTest = new DataHubTest();
+    WriteDataHubPerformanceTest dataHubTest = new WriteDataHubPerformanceTest();
     try {
       int i = 0;
 //      while(true){

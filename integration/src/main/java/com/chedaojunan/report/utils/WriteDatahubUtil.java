@@ -61,12 +61,7 @@ public class WriteDatahubUtil {
       return -1;
     }
     Topic topic = Topic.Builder.build(projectName, topicName, client);
-    List<ShardEntry> shards = topic.listShard();
-    RecordSchema schema = topic.getRecordSchema();
     List<RecordEntry> recordEntries = new ArrayList();
-    String ymd;
-    String hm;
-    long time;
 
     DatahubDeviceData integrationData;
     for (int i = 0; i < list.size(); i++) {

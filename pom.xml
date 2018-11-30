@@ -177,7 +177,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
+<!--
   <repositories>
     <repository>
       <id>local</id>
@@ -188,6 +188,7 @@
     </repository>
 
   </repositories>
+  -->
 
   <build>
     <!--<resources>-->

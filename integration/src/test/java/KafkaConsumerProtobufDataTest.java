@@ -6,16 +6,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 
-public class KafkaConsumerTest {
+public class KafkaConsumerProtobufDataTest {
 
   private static final String BOOTSTRAP_SERVERS = "123.56.223.119:9092,123.56.216.151:9092,47.94.98.137:9092";
+  private static final String INPUT_TOPIC = "deviceGpsProtoTest";
 
   public static List<String> runConsumer(String inputTopic) throws Exception{
     final Consumer<String, GpsProto> consumer = createConsumer(inputTopic);
     while (true) {
       final ConsumerRecords<String, GpsProto> consumerRecords = consumer.poll(10);
       for (ConsumerRecord<String, GpsProto> record : consumerRecords) {
-          record.value();
         System.out.println(record.value());
       }
     }
@@ -38,9 +38,7 @@ public class KafkaConsumerTest {
   }
 
   public static void main(String... args) throws Exception {
-    String inputTopic = "device_gps_test";
-    runConsumer(inputTopic);
-
+    runConsumer(INPUT_TOPIC);
   }
 
 }

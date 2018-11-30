@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.kafka.streams.KeyValue;
@@ -36,7 +35,7 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
     /*schedulePunctuateInMilliSeconds = Integer.parseInt(
         ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME, KafkaConstants.KAFKA_WINDOW_DURATION)
     ) * 1000;*/
-    schedulePunctuateInMilliSeconds = 10000; // for test only
+    schedulePunctuateInMilliSeconds = 60000; // for test only
   }
 
   /**
@@ -107,8 +106,8 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
       Windowed<String> windowedKey,
       String windowId,
       String windowedDeviceId) {
-    System.out.println("inside checkStateStoreAndTransform: " + windowedDeviceId);
-    System.out.println("cancelling schedulerMap: " + windowId);
+//    System.out.println("inside checkStateStoreAndTransform: " + windowedDeviceId);
+//    System.out.println("cancelling schedulerMap: " + windowId);
     if (schedulerMap.containsKey(windowId))
       schedulerMap.get(windowId).cancel();
 
