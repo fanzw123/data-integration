@@ -35,7 +35,7 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
     kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
     schedulePunctuateInMilliSeconds = Integer.parseInt(
             kafkaProperties.getProperty(KafkaConstants.KAFKA_WINDOW_DURATION)
-    ) * 60000;
+    ) * 1000;
 //    schedulePunctuateInMilliSeconds = 60000; // for test only
     storeName = kafkaProperties.getProperty(KafkaConstants.DEDUP_STORE_NAME);
   }
