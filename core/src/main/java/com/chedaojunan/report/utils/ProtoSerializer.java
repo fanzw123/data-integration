@@ -2,6 +2,8 @@ package com.chedaojunan.report.utils;
 
 import com.cdja.cloud.data.proto.GpsProto;
 import org.apache.kafka.common.serialization.Serializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -11,6 +13,7 @@ import java.util.Map;
  */
 public class ProtoSerializer implements Serializer<GpsProto.Gps> {
   private String encoding = "UTF8";
+  private static final Logger logger = LoggerFactory.getLogger(ProtoSerializer.class);
 
   @Override
   public void configure(Map configs, boolean isKey) {
@@ -30,8 +33,7 @@ public class ProtoSerializer implements Serializer<GpsProto.Gps> {
       else
         return ProtoFactory.createProtoClass(data).toByteArray();
     } catch (Exception e) {
-      //throw new SerializationException("Error when serializing string to byte[] due to unsupported encoding " + encoding);
-      e.printStackTrace();
+      logger.error("gpsProto serialize error!!!");
     }
     return null;
   }

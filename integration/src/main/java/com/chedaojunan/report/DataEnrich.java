@@ -14,10 +14,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.Consumed;
-import org.apache.kafka.streams.KafkaStreams;
-import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.*;
 import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.state.KeyValueStore;
 import org.apache.kafka.streams.state.StoreBuilder;
@@ -95,11 +92,13 @@ public class DataEnrich {
     String kafkaApplicationName = kafkaProperties.getProperty(KafkaConstants.RAWDATA_STREAM_APPLICATION_NAME);
     streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
     streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
-        kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
+            kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
     //streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
-    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 60000);
+    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG,
+            kafkaProperties.getProperty(KafkaConstants.RAWDATA_ENRICHED_REQUEST_TIMEOUT_MS_CONFIG));
     // RecordTooLargeException
-    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
+    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,
+            kafkaProperties.getProperty(KafkaConstants.MAX_REQUEST_SIZE_CONFIG));
 
     // protoc buffer
     streamsConfiguration.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, ProtoSeder.class.getName());
@@ -110,7 +109,7 @@ public class DataEnrich {
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
-    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.RAWDATA_STATE_DIR_CONFIG));
+//    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.RAWDATA_STATE_DIR_CONFIG));
 
     return streamsConfiguration;
   }
@@ -129,6 +128,10 @@ public class DataEnrich {
     KStream<String, GpsProto.Gps> inputStream = builder.stream(inputTopic);
 
     KStream<Windowed<String>, ArrayList<FixedFrequencyGpsData>> windowedRawData = inputStream
+        .map(
+                (key, frequencyGps) ->
+                        new KeyValue<>(frequencyGps.getDeviceId(), frequencyGps)
+        )
         .groupByKey()
         .windowedBy(TimeWindows.of(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)).until(TimeUnit.SECONDS.toMillis(kafkaWindowLengthInSeconds)))
         .aggregate(
@@ -160,13 +163,16 @@ public class DataEnrich {
     streamsConfiguration.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaApplicationName);
     streamsConfiguration.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
         kafkaProperties.getProperty(KafkaConstants.KAFKA_BOOTSTRAP_SERVERS));
-    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, 100000);
+    streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG,
+            kafkaProperties.getProperty(KafkaConstants.WRITE_DATAHUB_REQUEST_TIMEOUT_MS_CONFIG));
     // RecordTooLargeException
-    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, 12695150);
+    streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,
+            kafkaProperties.getProperty(KafkaConstants.MAX_REQUEST_SIZE_CONFIG));
 
     streamsConfiguration.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, kafkaProperties.getProperty(KafkaConstants.AUTO_OFFSET_RESET_CONFIG));
 
-    streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, TimeUnit.SECONDS.toMillis(10));
+    long seconds = Long.parseLong(kafkaProperties.getProperty(KafkaConstants.WRITE_DATAHUB_COMMIT_INTERVAL_MS_CONFIG));
+    streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, TimeUnit.SECONDS.toMillis(seconds));
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
@@ -192,15 +198,11 @@ public class DataEnrich {
         enrichedDataOver = regeoClient.getRegeoFromResponse(enrichedDataList);
       }
       if (enrichedDataOver != null) {
-        try {
-          // 整合数据入库datahub
-          if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
-            System.out.println("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
-            logger.info("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
-            writeDatahubUtil.putRecords(enrichedDataOver);
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
+        // 整合数据入库datahub
+        if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
+//          System.out.println("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
+          logger.info("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
+          writeDatahubUtil.putRecords(enrichedDataOver);
         }
       }
     });

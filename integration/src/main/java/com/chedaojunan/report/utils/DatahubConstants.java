@@ -13,5 +13,7 @@ public class DatahubConstants {
   public static final String PROJECT_NAME = "datahub.project.name";
   public static final String TOPIC_NAME = "datahub.topic.name";
   public static final String TOPIC_SHARDNUM = "datahub.topic.shardnum";
+  public static final String RETRY_COUNT = "datahub.retrycount";
+  public static final String CONNECTIONS_PERENDPOINT = "datahub.connections.perendpoint";
 
 }

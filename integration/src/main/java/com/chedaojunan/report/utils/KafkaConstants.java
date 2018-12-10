@@ -13,6 +13,11 @@ public class KafkaConstants {
   public static final String KAFKA_WINDOW_DURATION = "kafka.window.duration.seconds"; //seconds
   public static final String AUTO_OFFSET_RESET_CONFIG = "kafka.auto.offset.rest";
 
+  public static final String MAX_REQUEST_SIZE_CONFIG = "max.request.size.config";
+  public static final String RAWDATA_ENRICHED_REQUEST_TIMEOUT_MS_CONFIG = "rawdata.enriched.request.timeout.ms.config";
+  public static final String WRITE_DATAHUB_REQUEST_TIMEOUT_MS_CONFIG = "write.datahub.request.timeout.ms.config";
+  public static final String WRITE_DATAHUB_COMMIT_INTERVAL_MS_CONFIG = "write.datahub.commit.interval.ms.config";
+
   public static final String HYPHEN = "-";
 
   public static final String COORDINATE_CONVERT_LENGTH = "coordinate.convert.length";

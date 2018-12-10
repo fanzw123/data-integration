@@ -2,17 +2,15 @@ package com.chedaojunan.report.utils;
 
 import com.cdja.cloud.data.proto.GpsProto;
 import com.chedaojunan.report.client.CoordinateConvertClient;
-import com.chedaojunan.report.common.Constants;
 import com.chedaojunan.report.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Properties;
 
 public class SampledDataCleanAndRet {
 
@@ -23,7 +21,6 @@ public class SampledDataCleanAndRet {
     private static CoordinateConvertClient coordinateConvertClient;
 
     static CalculateUtils calculateUtils = new CalculateUtils();
-    private static final Logger logger = LoggerFactory.getLogger(SampledDataCleanAndRet.class);
 
     static {
         kafkaProperties = ReadProperties.getProperties(KafkaConstants.PROPERTIES_FILE_NAME);
@@ -93,74 +90,6 @@ public class SampledDataCleanAndRet {
             return sampleDataHaveDirection(listSample);
         }
         return null;
-    }
-
-    // 采样数据中无direction
-    public static AutoGraspRequest sampleDataNoDirection(ArrayList<FixedFrequencyGpsData> listSample) {
-        FixedFrequencyGpsData accessData1;
-        FixedFrequencyGpsData accessData2;
-        List<Long> times = new ArrayList<>();
-        List<Double> directions = new ArrayList<>();
-        Double direction;
-        AzimuthFromLogLatUtil azimuthFromLogLatUtil;
-        AzimuthFromLogLatUtil A;
-        AzimuthFromLogLatUtil B;
-        List<Double> speeds = new ArrayList<>();
-        String apiKey = "";
-        String carId = "";
-        Pair<Double, Double> location;
-        List<Pair<Double, Double>> locations = new ArrayList<>();
-        DateUtils dateUtils = new DateUtils();
-        int listSampleCount = listSample.size();
-        if (listSampleCount > 2) {
-            for (int i = 0; i < listSampleCount; i++) {
-                if (i == listSampleCount - 1) {
-                    accessData1 = listSample.get(i - 1);
-                    accessData2 = listSample.get(i);
-
-                    // 需确认数据端收集的数据格式，并转化为UTC格式
-                    times.add(accessData2.getServerTime() == "" ? 0L : dateUtils.getUTCTimeFromLocal(Long.valueOf(accessData2.getServerTime())));
-                    speeds.add(accessData2.getGpsSpeed());
-                    location = new Pair<>(accessData2.getLongitude(), accessData2.getLatitude());
-                    locations.add(location);
-                } else {
-                    accessData1 = listSample.get(i);
-                    accessData2 = listSample.get(i + 1);
-
-                    // 需确认数据端收集的数据格式，并转化为UTC格式
-                    times.add(accessData1.getServerTime() == "" ? 0L : dateUtils.getUTCTimeFromLocal(Long.valueOf(accessData1.getServerTime())));
-                    speeds.add(accessData1.getGpsSpeed());
-                    location = new Pair<>(accessData1.getLongitude(), accessData1.getLatitude());
-                    locations.add(location);
-                }
-
-                if (i == 0) {
-                    apiKey = EndpointUtils.getEndpointProperties().getProperty(EndpointConstants.GAODE_API_KEY);
-                    carId = accessData1.getDeviceId();
-                }
-
-                // 根据经纬度计算得出
-                A = new AzimuthFromLogLatUtil(accessData1.getLongitude(), accessData1.getLatitude());
-                B = new AzimuthFromLogLatUtil(accessData2.getLongitude(), accessData2.getLatitude());
-                azimuthFromLogLatUtil = new AzimuthFromLogLatUtil();
-
-                direction = azimuthFromLogLatUtil.getAzimuth(A, B);
-                if (!Double.isNaN(direction)) {
-                    directions.add(direction);
-                } else {
-                    directions.add(0.0);
-                }
-            }
-
-            String locationString = PrepareAutoGraspRequest.convertLocationsToRequestString(locations);
-            String timeString = PrepareAutoGraspRequest.convertTimeToRequstString(times);
-            String speedString = PrepareAutoGraspRequest.convertSpeedToRequestString(speeds);
-            String directionString = PrepareAutoGraspRequest.convertDirectionToRequestString(directions);
-
-            AutoGraspRequest autoGraspRequest = new AutoGraspRequest(apiKey, carId, locationString, timeString, directionString, speedString);
-            return autoGraspRequest;
-        } else
-            return null;
     }
 
     // 采样数据中有direction
@@ -309,35 +238,6 @@ public class SampledDataCleanAndRet {
     }*/
     }
 
-//    public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
-//        if (StringUtils.isEmpty(accessDataString))
-//            return null;
-//        FixedFrequencyGpsData accessData = new FixedFrequencyGpsData();
-//        String deviceImei = accessDataString.split("\\n")[0].replace("\"","").split(":")[1].trim();
-//        String deviceId = accessDataString.split("\\n")[1].replace("\"","").split(":")[1].trim();
-//        String localTime = accessDataString.split("\\n")[2].replace("\"","").split(":")[1].trim();
-//        String tripId = accessDataString.split("\\n")[3].replace("\"","").split(":")[1].trim();
-//        String serverTime = accessDataString.split("\\n")[4].replace("\"","").split(":")[1].trim();
-//        double latitude = Double.parseDouble(accessDataString.split("\\n")[5].replace("\"","").split(":")[1].trim());
-//        double longitude = Double.parseDouble(accessDataString.split("\\n")[6].replace("\"","").split(":")[1].trim());
-//        double altitude = Double.parseDouble(accessDataString.split("\\n")[7].replace("\"","").split(":")[1].trim());
-//        double direction = Double.parseDouble(accessDataString.split("\\n")[8].replace("\"","").split(":")[1].trim());
-//        double gpsSpeed = Double.parseDouble(accessDataString.split("\\n")[9].replace("\"","").split(":")[1].trim());
-//
-//        accessData.setDeviceImei(deviceImei);
-//        accessData.setDeviceId(deviceId);
-//        accessData.setLocalTime(localTime);
-//        accessData.setTripId(tripId);
-//        accessData.setServerTime(serverTime);
-//        accessData.setLatitude(latitude);
-//        accessData.setLongitude(longitude);
-//        accessData.setAltitude(altitude);
-//        accessData.setDirection(direction);
-//        accessData.setGpsSpeed(gpsSpeed);
-//
-//        return accessData;
-//    }
-
     public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
         if (StringUtils.isEmpty(accessDataString))
             return null;
@@ -345,32 +245,6 @@ public class SampledDataCleanAndRet {
         try {
             FixedFrequencyGpsData accessData = objectMapper.readValue(accessDataString, FixedFrequencyGpsData.class);
             return accessData;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static FixedFrequencyIntegrationData convertToFixedFrequencyIntegrationDataPojo(String integrationDataString) {
-        if (StringUtils.isEmpty(integrationDataString))
-            return null;
-        ObjectMapper objectMapper = ObjectMapperUtils.getObjectMapper();
-        try {
-            FixedFrequencyIntegrationData integrationData = objectMapper.readValue(integrationDataString, FixedFrequencyIntegrationData.class);
-            return integrationData;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public static AutoGraspRequest convertToAutoGraspRequest(String apiRequest) {
-        if (StringUtils.isEmpty(apiRequest))
-            return null;
-        ObjectMapper objectMapper = ObjectMapperUtils.getObjectMapper();
-        try {
-            AutoGraspRequest autoGraspRequest = objectMapper.readValue(apiRequest, AutoGraspRequest.class);
-            return autoGraspRequest;
         } catch (IOException e) {
             e.printStackTrace();
             return null;
@@ -426,4 +300,5 @@ public class SampledDataCleanAndRet {
 
         return fixedFrequencyGpsData;
     }
+
 }

@@ -2,6 +2,8 @@ package com.chedaojunan.report.utils;
 
 import com.cdja.cloud.data.proto.GpsProto;
 import org.apache.kafka.common.serialization.Deserializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
@@ -11,6 +13,8 @@ import java.util.Map;
  */
 public class ProtoDeserializer implements Deserializer {
   private String encoding = "UTF8";
+
+  private static final Logger logger = LoggerFactory.getLogger(ProtoDeserializer.class);
 
   @Override
   public void configure(Map configs, boolean isKey) {
@@ -33,7 +37,7 @@ public class ProtoDeserializer implements Deserializer {
       else
         return null;
     } catch (Exception e) {
-      e.printStackTrace();
+      logger.error("gpsProto deserialize error!!!");
     }
     return null;
   }

@@ -35,6 +35,8 @@ public class WriteDatahubUtil {
   private static String projectName = datahubProperties.getProperty(DatahubConstants.PROJECT_NAME);
   private static String topicName = datahubProperties.getProperty(DatahubConstants.TOPIC_NAME);
   private static String topicShardNum = datahubProperties.getProperty(DatahubConstants.TOPIC_SHARDNUM);
+  private static String topicRetryCount = datahubProperties.getProperty(DatahubConstants.RETRY_COUNT);
+  private static String connectionsPerEndpoint = datahubProperties.getProperty(DatahubConstants.CONNECTIONS_PERENDPOINT);
 
   private DatahubClient client;
   private DatahubConfiguration conf;
@@ -44,6 +46,7 @@ public class WriteDatahubUtil {
 
   public WriteDatahubUtil() {
     conf = new DatahubConfiguration(new AliyunAccount(accessId, accessKey), endpoint);
+    conf.setConnectionsPerEndpoint(Integer.parseInt(connectionsPerEndpoint));
     client = new DatahubClient(conf);
   }
 
@@ -73,7 +76,7 @@ public class WriteDatahubUtil {
     }
 
     // 尝试次数
-    int retryCount = 3;
+    int retryCount = Integer.parseInt(topicRetryCount);
     PutRecordsResult result = topic.putRecords(recordEntries, retryCount);
     int failNum = result.getFailedRecordCount();
     if (failNum > 0) {

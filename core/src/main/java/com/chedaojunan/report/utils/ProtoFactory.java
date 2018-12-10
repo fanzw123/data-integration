@@ -2,12 +2,17 @@ package com.chedaojunan.report.utils;
 
 import com.cdja.cloud.data.proto.GpsProto;
 import com.google.protobuf.InvalidProtocolBufferException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author fanzw
  * @description: protoc工厂类
  */
 public class ProtoFactory {
+
+  private static final Logger logger = LoggerFactory.getLogger(ProtoFactory.class);
+
   public static GpsProto.Gps createProtoClass(GpsProto.Gps gpsData) {
 
     GpsProto.Gps.Builder builder = GpsProto.Gps.newBuilder()
@@ -30,7 +35,7 @@ public class ProtoFactory {
     try {
       return GpsProto.Gps.parseFrom(bytes);
     } catch (InvalidProtocolBufferException e) {
-      e.printStackTrace();
+      logger.error("getFrequencyGps gpsProto parse error!!!");
     }
     return null;
   }
