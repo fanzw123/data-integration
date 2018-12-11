@@ -109,7 +109,7 @@ public class DataEnrich {
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
-//    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.RAWDATA_STATE_DIR_CONFIG));
+    streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, kafkaProperties.getProperty(KafkaConstants.RAWDATA_STATE_DIR_CONFIG));
 
     return streamsConfiguration;
   }
@@ -190,7 +190,7 @@ public class DataEnrich {
 
     KStream<String, ArrayList<FixedFrequencyIntegrationData>> writeToDataHubStream =
         builder.stream(inputTopic, Consumed.with(stringSerde, arrayListFixedFrequencyIntegrationSerde));
-    writeToDataHubStream.print(Printed.toSysOut());
+//    writeToDataHubStream.print(Printed.toSysOut());
 
     writeToDataHubStream.foreach((windowedDeviceId, enrichedDataList) -> {
       ArrayList<DatahubDeviceData> enrichedDataOver = null;
