@@ -13,7 +13,7 @@ import java.util.Properties;
 public class KafkaProducerPerformanceTest {
 
   private static final Logger logger = LoggerFactory.getLogger(KafkaProducerPerformanceTest.class);
-  private static final String BOOTSTRAP_SERVERS = "123.56.223.119:9092,123.56.216.151:9092,47.94.98.137:9092";
+  private static final String BOOTSTRAP_SERVERS = "47.95.10.165:9092,47.93.24.115:9092,39.106.170.188:9092";
   private static final String INPUT_TOPIC = "deviceGpsProtoTest";
 
   private Producer producer;
@@ -36,7 +36,7 @@ public class KafkaProducerPerformanceTest {
 
     String serverTime = System.currentTimeMillis()+"";
 
-    for (int j = 0; j < 1000; j++) {
+    for (int j = 0; j < 50; j++) {
       n++;
       GpsProto.Gps.Builder gpsData = GpsProto.Gps.newBuilder();
       gpsData.setDeviceId("04test0000" + j);

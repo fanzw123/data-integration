@@ -96,6 +96,15 @@ public class DataEnrich {
     //streamsConfiguration.put(StreamsConfig.NUM_STREAM_THREADS_CONFIG, 4);
     streamsConfiguration.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG,
             kafkaProperties.getProperty(KafkaConstants.RAWDATA_ENRICHED_REQUEST_TIMEOUT_MS_CONFIG));
+    streamsConfiguration.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "90000");
+    // 一次从kafka中poll出来的数据条数
+    // max.poll.records条数据需要在在session.timeout.ms这个时间内处理完
+    streamsConfiguration.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "500");
+    // server发送到消费端的最小数据，若是不满足这个数值则会等待直到满足指定大小。默认为1表示立即接收。
+    streamsConfiguration.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, "100");
+    // 若是不满足fetch.min.bytes时，等待消费端请求的最长等待时间
+    streamsConfiguration.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, "1000");
+
     // RecordTooLargeException
     streamsConfiguration.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG,
             kafkaProperties.getProperty(KafkaConstants.MAX_REQUEST_SIZE_CONFIG));
@@ -173,6 +182,16 @@ public class DataEnrich {
 
     long seconds = Long.parseLong(kafkaProperties.getProperty(KafkaConstants.WRITE_DATAHUB_COMMIT_INTERVAL_MS_CONFIG));
     streamsConfiguration.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, TimeUnit.SECONDS.toMillis(seconds));
+
+    streamsConfiguration.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "90000");
+    // 一次从kafka中poll出来的数据条数
+    // max.poll.records条数据需要在在session.timeout.ms这个时间内处理完
+    streamsConfiguration.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "500");
+    // server发送到消费端的最小数据，若是不满足这个数值则会等待直到满足指定大小。默认为1表示立即接收。
+    streamsConfiguration.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, "100");
+    // 若是不满足fetch.min.bytes时，等待消费端请求的最长等待时间
+    streamsConfiguration.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, "1000");
+
     // disable cache
     streamsConfiguration.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
     // Use a temporary directory for storing state, which will be automatically removed after the test.
@@ -195,14 +214,22 @@ public class DataEnrich {
     writeToDataHubStream.foreach((windowedDeviceId, enrichedDataList) -> {
       ArrayList<DatahubDeviceData> enrichedDataOver = null;
       if (enrichedDataList != null) {
-        enrichedDataOver = regeoClient.getRegeoFromResponse(enrichedDataList);
+        try {
+          enrichedDataOver = regeoClient.getRegeoFromResponse(enrichedDataList);
+        } catch (Exception e) {
+          logger.error("getRegeoFromResponse is error:" + e);
+        }
       }
       if (enrichedDataOver != null) {
-        // 整合数据入库datahub
-        if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
-//          System.out.println("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
-          logger.info("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
-          writeDatahubUtil.putRecords(enrichedDataOver);
+        try {
+          // 整合数据入库datahub
+          if (CollectionUtils.isNotEmpty(enrichedDataOver)) {
+  //          System.out.println("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
+            logger.info("write to DataHub: " + Instant.now().toString() + " enrichedDataOver.size(): " + enrichedDataOver.size());
+            writeDatahubUtil.putRecords(enrichedDataOver);
+          }
+        } catch (Exception e) {
+          logger.error("enrichedData write to datahub is error:" + e);
         }
       }
     });

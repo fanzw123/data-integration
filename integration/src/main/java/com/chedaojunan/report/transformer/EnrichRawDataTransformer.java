@@ -20,12 +20,16 @@ import com.chedaojunan.report.model.FixedFrequencyGpsData;
 import com.chedaojunan.report.model.FixedFrequencyIntegrationData;
 import com.chedaojunan.report.utils.KafkaConstants;
 import com.chedaojunan.report.utils.SampledDataCleanAndRet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EnrichRawDataTransformer implements Transformer<Windowed<String>, ArrayList<FixedFrequencyGpsData>, KeyValue<String, ArrayList<FixedFrequencyIntegrationData>>> {
 
   private static final String storeName;
 
   private static Properties kafkaProperties = null;
+
+  private static final Logger logger = LoggerFactory.getLogger(EnrichRawDataTransformer.class);
 
   private ProcessorContext context;
 
@@ -87,7 +91,6 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
           schedulePunctuateInMilliSeconds,
           PunctuationType.WALL_CLOCK_TIME,
           (timestamp) -> checkStateStoreAndTransform(
-              windowedKey,
               windowId,
               windowedDeviceId
           )
@@ -105,7 +108,6 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
   }
 
   private void checkStateStoreAndTransform(
-      Windowed<String> windowedKey,
       String windowId,
       String windowedDeviceId) {
 //    System.out.println("inside checkStateStoreAndTransform: " + windowedDeviceId);
@@ -114,7 +116,7 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
       schedulerMap.get(windowId).cancel();
 
     ArrayList<FixedFrequencyGpsData> rawDataList = rawDataStore.get(windowedDeviceId);
-    if(CollectionUtils.isNotEmpty(rawDataList)) {
+    if (CollectionUtils.isNotEmpty(rawDataList)) {
       context.forward(windowedDeviceId, operateOnWindowRawData(rawDataList));
       rawDataStore.delete(windowedDeviceId);
     }
@@ -169,15 +171,20 @@ public class EnrichRawDataTransformer implements Transformer<Windowed<String>, A
 
     // 坐标转化接口调用
     List<FixedFrequencyAccessGpsData> coordinateConvertResponseList;
-    coordinateConvertResponseList = SampledDataCleanAndRet.getCoordinateConvertResponseList(rawDataList);
-    ArrayList<FixedFrequencyAccessGpsData> sampledDataList = SampledDataCleanAndRet.sampleKafkaData(new ArrayList<>(coordinateConvertResponseList));
-    AutoGraspRequest autoGraspRequest = SampledDataCleanAndRet.autoGraspRequestRet(sampledDataList);
-    List<FixedFrequencyIntegrationData> gaodeApiResponseList = new ArrayList<>();
-    if (autoGraspRequest != null)
-      gaodeApiResponseList = autoGraspApiClient.getTrafficInfoFromAutoGraspResponse(autoGraspRequest);
-    ArrayList<FixedFrequencyIntegrationData> enrichedDataList = SampledDataCleanAndRet.dataIntegration(coordinateConvertResponseList, sampledDataList, gaodeApiResponseList);
-    return enrichedDataList;
+    try {
+      coordinateConvertResponseList = SampledDataCleanAndRet.getCoordinateConvertResponseList(rawDataList);
+      ArrayList<FixedFrequencyAccessGpsData> sampledDataList = SampledDataCleanAndRet.sampleKafkaData(new ArrayList<>(coordinateConvertResponseList));
+      AutoGraspRequest autoGraspRequest = SampledDataCleanAndRet.autoGraspRequestRet(sampledDataList);
+      List<FixedFrequencyIntegrationData> gaodeApiResponseList = new ArrayList<>();
+      if (autoGraspRequest != null)
+        gaodeApiResponseList = autoGraspApiClient.getTrafficInfoFromAutoGraspResponse(autoGraspRequest);
+      ArrayList<FixedFrequencyIntegrationData> enrichedDataList = SampledDataCleanAndRet.dataIntegration(coordinateConvertResponseList, sampledDataList, gaodeApiResponseList);
+      return enrichedDataList;
+    } catch (Exception e) {
+      logger.error("operateOnWindowRawData is error:" + e);
+      return null;
+    }
+
   }
 
 }
-

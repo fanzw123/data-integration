@@ -1,5 +1,7 @@
 package com.chedaojunan.report.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -30,7 +32,8 @@ public class ReadProperties {
     Properties prop = new Properties();
     String value = null;
     try {
-      InputStream inputStream = ReadProperties.class.getClassLoader().getResourceAsStream(filePath);
+      String fileP = System.getProperty("user.dir") + File.separator + filePath;
+      InputStream inputStream = new FileInputStream(fileP);
       prop.load(inputStream);
       value = prop.getProperty(keyWord);
     } catch (IOException e) {
@@ -48,7 +51,8 @@ public class ReadProperties {
   public static Properties getProperties(String filePath){
     Properties prop = new Properties();
     try {
-      InputStream inputStream = ReadProperties.class.getClassLoader().getResourceAsStream(filePath);
+      String fileP = System.getProperty("user.dir") + File.separator + filePath;
+      InputStream inputStream = new FileInputStream(fileP);
       prop.load(inputStream);
     } catch (IOException e) {
       logger.error("Exception {} in loading properties file {} ", e, filePath);

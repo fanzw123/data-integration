@@ -17,6 +17,7 @@ public class ResponseUtils {
   private static final Logger logger = LoggerFactory.getLogger(ResponseUtils.class);
 
   private static final String INVALID_CROSSPOINT = "0,0";
+  private static final String INVALID_COORDINATECONVERT_RESPONSE_GPS = "0,0";
 
   public static String validateStringOrStringArray (JsonNode jsonNode) {
     String nodeValue = "";
@@ -44,11 +45,18 @@ public class ResponseUtils {
 
   public static AutoGraspResponse convertStringToAutoGraspResponse(String autoGraspResponseString) {
     AutoGraspResponse autoGraspResponse = new AutoGraspResponse();
+    // start add for null check by 2019.01.13
+    if (autoGraspResponse == null) {
+      autoGraspResponse.setCount(0);
+      return autoGraspResponse;
+    }
+    // end add for null check by 2019.01.13
     try {
       JsonNode autoGraspResponseNode = ObjectMapperUtils.getObjectMapper().readTree(autoGraspResponseString);
-      if (autoGraspResponseNode == null)
-        return null;
-      else {
+      if (autoGraspResponseNode == null) {
+        autoGraspResponse.setCount(0);
+        return autoGraspResponse;
+      } else {
         int autoGraspStatus = autoGraspResponseNode.get(AutoGraspResponse.STATUS).asInt();
         String autoGraspInfoString = autoGraspResponseNode.get(AutoGraspResponse.INFO).asText();
         String autoGraspInfoCode = autoGraspResponseNode.get(AutoGraspResponse.INFO_CODE).asText();
@@ -142,11 +150,20 @@ public class ResponseUtils {
 
   public static RectangleTrafficInfoResponse convertToTrafficInfoResponse (String trafficInfoResponseString) {
     RectangleTrafficInfoResponse trafficInfoResponse = new RectangleTrafficInfoResponse();
+    // start add for null check by 2019.01.13
+    if (trafficInfoResponseString == null) {
+      trafficInfoResponse.setTrafficInfo(null);
+      trafficInfoResponse.setStatus(0);
+      return trafficInfoResponse;
+    }
+    // end add for null check by 2019.01.13
     try {
       JsonNode trafficInfoResponseNode = ObjectMapperUtils.getObjectMapper().readTree(trafficInfoResponseString);
-      if (trafficInfoResponseNode == null)
-        return null;
-      else {
+      if (trafficInfoResponseNode == null) {
+        trafficInfoResponse.setTrafficInfo(null);
+        trafficInfoResponse.setStatus(0);
+        return trafficInfoResponse;
+      } else {
         int trafficInfoStatus = trafficInfoResponseNode.get(GaoDeApiResponse.STATUS).asInt();
         String trafficInfoString = trafficInfoResponseNode.get(GaoDeApiResponse.INFO).asText();
         String trafficInfoCode = trafficInfoResponseNode.get(GaoDeApiResponse.INFO_CODE).asText();
@@ -196,11 +213,18 @@ public class ResponseUtils {
 
   public static CoordinateConvertResponse convertStringToCoordinateConvertResponse(String coordinateConvertResponseString) {
     CoordinateConvertResponse coordinateConvertResponse = new CoordinateConvertResponse();
+    // start add for null check by 2019.01.13
+    if (coordinateConvertResponseString == null) {
+      coordinateConvertResponse.setLocations(INVALID_COORDINATECONVERT_RESPONSE_GPS);
+      return coordinateConvertResponse;
+    }
+    // end add for null check by 2019.01.13
     try {
       JsonNode coordinateConvertResponseNode = ObjectMapperUtils.getObjectMapper().readTree(coordinateConvertResponseString);
-      if (coordinateConvertResponseNode == null)
-        return null;
-      else {
+      if (coordinateConvertResponseNode == null) {
+        coordinateConvertResponse.setLocations(INVALID_COORDINATECONVERT_RESPONSE_GPS);
+        return coordinateConvertResponse;
+      } else {
         int coordinateConvertStatus = coordinateConvertResponseNode.get(CoordinateConvertResponse.STATUS).asInt();
         String coordinateConvertInfoString = coordinateConvertResponseNode.get(CoordinateConvertResponse.INFO).asText();
         String coordinateConvertInfoCode = coordinateConvertResponseNode.get(CoordinateConvertResponse.INFO_CODE).asText();

@@ -1,5 +1,7 @@
 package com.chedaojunan.report.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -15,7 +17,9 @@ public class EndpointUtils {
   private static Properties endpointProperties = null;
 
   static {
-    try (InputStream inputStream = EndpointUtils.class.getClassLoader().getResourceAsStream(EndpointConstants.PROPERTIES_FILE_NAME)) {
+    try {
+      String filePath = System.getProperty("user.dir") + File.separator + EndpointConstants.PROPERTIES_FILE_NAME;
+      InputStream inputStream = new FileInputStream(filePath);
       endpointProperties = new Properties();
       endpointProperties.load(inputStream);
       inputStream.close();

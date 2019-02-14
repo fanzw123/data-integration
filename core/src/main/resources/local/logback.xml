@@ -10,23 +10,41 @@
   </appender>
 
   <!-- 按照每天生成日志文件 -->
-  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <File>${LOG_HOME}/data-integration.log</File>
-    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <!--日志文件输出的文件名 -->
-      <FileNamePattern>${LOG_HOME}/data-integration-%d{yyyy-MM-dd}.log.%i</FileNamePattern>
-      <MaxHistory>10</MaxHistory>
-      <timeBasedFileNamingAndTriggeringPolicy
-              class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-        <!-- or whenever the file size reaches 100MB -->
-        <maxFileSize>100MB</maxFileSize>
-      </timeBasedFileNamingAndTriggeringPolicy>
-    </rollingPolicy>
+  <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+      <level>ERROR</level>
+      <onMatch>DENY</onMatch>
+      <onMismatch>ACCEPT</onMismatch>
+    </filter>
     <encoder>
       <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} -%msg%n</Pattern>
       <charset>UTF-8</charset>
       <immediateFlush>true</immediateFlush>
     </encoder>
+    <File>${LOG_HOME}/data-integration.log</File>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <FileNamePattern>logs/data-integration.log.%d{yyyy-MM-dd}</FileNamePattern>
+      <!-- keep 3 days' worth of history -->
+      <maxHistory>3</maxHistory>
+    </rollingPolicy>
+  </appender>
+
+  <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>ERROR</level>
+    </filter>
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{80} - %msg %n</pattern>
+    </encoder>
+    <File>logs/data-integration.err.log</File>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- daily rollover -->
+      <FileNamePattern>logs/data-integration.err.log.%d{yyyy-MM-dd}</FileNamePattern>
+      <!-- keep 7 days' worth of history -->
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
   </appender>
 
   <logger name="org.apache.kafka" level="WARN"/>
@@ -35,6 +53,7 @@
   <logger name="com.chedaojunan.report" level="INFO"/>
 
   <root level="INFO">
-    <appender-ref ref="FILE" />
+    <appender-ref ref="FILE_INFO" />
+    <appender-ref ref="FILE_ERROR" />
   </root>
 </configuration>

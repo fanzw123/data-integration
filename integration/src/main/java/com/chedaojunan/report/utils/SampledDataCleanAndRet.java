@@ -19,6 +19,7 @@ public class SampledDataCleanAndRet {
     private static final int coordinateConvertLength;
     private static Properties kafkaProperties = null;
     private static CoordinateConvertClient coordinateConvertClient;
+    private static final String INVALID_COORDINATECONVERT_RESPONSE_GPS = "0,0";
 
     static CalculateUtils calculateUtils = new CalculateUtils();
 
@@ -210,34 +211,6 @@ public class SampledDataCleanAndRet {
         integrationData.setCorrectedLongitude(accessData.getCorrectedLongitude());
     }
 
-    public static void main(String[] args) throws Exception {
-
-    /*List<FixedFrequencyAccessData> batchList = new ArrayList();
-    SampledDataCleanAndRet sampledData = new SampledDataCleanAndRet();
-    autoGraspApiClient = AutoGraspApiClient.getInstance();
-    // 1.60s数据采样返回
-    List<FixedFrequencyAccessData> listSample = sampledData.sampleKafkaData(batchList);
-    if (listSample.size() >= 3) {
-      // 2.高德抓路服务参数返回
-      AutoGraspRequestParam autoGraspRequestParam = sampledData.autoGraspRequestParamRet(listSample);
-      // 3.调用抓路服务
-      AutoGraspResponse response = autoGraspApiClient.getAutoGraspResponse(autoGraspRequestParam);
-      // 4. TODO 调用交通态势服务参数和服务
-    }
-    // TODO 以下为高德整合返回数据接受对象
-    Map gaoDeMap = new HashMap();
-    // 5.数据整合
-    List integrationDataList = sampledData.dataIntegration(batchList, listSample, gaoDeMap);
-    // 6.入库datahub
-    WriteDatahubUtil writeDatahubUtil = new WriteDatahubUtil();
-    if (integrationDataList.size() > 0) {
-      int failNum = writeDatahubUtil.putRecords(integrationDataList);
-      if (failNum > 0) {
-        log.info("整合数据入库datahub失败!");
-      }
-    }*/
-    }
-
     public static FixedFrequencyGpsData convertToFixedGpsDataPojo(String accessDataString) {
         if (StringUtils.isEmpty(accessDataString))
             return null;
@@ -254,7 +227,7 @@ public class SampledDataCleanAndRet {
     // 坐标转化调用，返回gps整合数据列表
     public static List<FixedFrequencyAccessGpsData> getCoordinateConvertResponseList(List<FixedFrequencyGpsData> accessDataList) {
         List<FixedFrequencyGpsData> accessDataListNew = null;
-        List<FixedFrequencyAccessGpsData> coordinateConvertResponse;
+        List<FixedFrequencyAccessGpsData> coordinateConvertResponse = null;
         List<FixedFrequencyAccessGpsData> coordinateConvertResponseList = new ArrayList<>();
         CoordinateConvertRequest coordinateConvertRequest = null;
         int num = accessDataList.size() / coordinateConvertLength;
@@ -277,6 +250,14 @@ public class SampledDataCleanAndRet {
                 if (coordinateConvertRequest != null) {
                     coordinateConvertResponse = coordinateConvertClient.getCoordinateConvertFromResponse(accessDataListNew, coordinateConvertRequest);
                     coordinateConvertRequest = null;
+                    coordinateConvertResponseList.addAll(coordinateConvertResponse);
+                } else {
+                    FixedFrequencyGpsData gpsData;
+                    for (int j = 0; j < accessDataListNew.size(); j++) {
+                        gpsData = accessDataListNew.get(i);
+                        FixedFrequencyAccessGpsData frequencyAccessGpsData = ResponseUtils.enrichDataWithCoordinateConvertResponse(gpsData, INVALID_COORDINATECONVERT_RESPONSE_GPS);
+                        coordinateConvertResponse.add(frequencyAccessGpsData);
+                    }
                     coordinateConvertResponseList.addAll(coordinateConvertResponse);
                 }
             }
